@@ -20,6 +20,16 @@ This project implements a CoinFlip Progressive Web App (PWA) with a Material Des
 - **Enhanced Content Sections:** Includes new sections for "Service Purpose & Scope of Responsibility", "Data & Log Handling", "Technical Explanation & User Advantages", and a "Frequently Asked Questions (FAQ)".
 - **Language Selection Hint:** A red-highlighted message below the main description informing users about language selection via the menu.
 
+## Generative Engine Optimization (GEO) Strategy
+To enhance discoverability and recommendation by generative AI models, the following GEO strategies have been implemented, drawing insights from Toss Payments and Google Search Central:
+
+*   **Structured Data (Schema.org):**
+    *   Expanded the existing `SoftwareApplication` schema with `author`, `keywords`, and `inLanguage` properties for richer context.
+    *   Added a comprehensive `FAQPage` schema to the "Frequently Asked Questions" section, enabling AI to better understand and utilize the Q&A content.
+*   **Content Freshness:** Ensured `sitemap.xml` includes an accurate `lastmod` date to signal recent updates to crawlers.
+*   **Crawler Accessibility:** Verified `robots.txt` allows all necessary resources to be crawled by search engines and AI.
+*   **E-E-A-T (Experience, Expertise, Authoritativeness, Trustworthiness):** Enhanced the "About CoinFlip" and "Technical Explanation" sections to provide more detailed, helpful, and trustworthy information about the application's randomness mechanism (Web Crypto API) and its purpose.
+
 ## Current Problem 1: 404 Error on Resource Load (Resolved)
 The user reported a "Failed to load resource: the server responded with a status of 404" error upon setup.
 - `index.html`, `style.css`, and `main.js` are present in the root directory.

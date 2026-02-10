@@ -34,7 +34,7 @@
 
     <!-- Schema.org Structured Data -->
     <script type="application/ld+json">
-    {
+    [{
       "@context": "https://schema.org",
       "@type": "SoftwareApplication",
       "name": "CoinFlip",
@@ -53,10 +53,55 @@
       "description": "A fair and simple coin flip tool to help make quick decisions with confidence. Utilizes Web Crypto API for true randomness and offers multilingual support.",
       "softwareHelp": {
         "@type": "CreativeWork",
-        "url": "https://flipcoin-5ag.pages.dev/faq.html" 
+        "url": "https://flipcoin-5ag.pages.dev/index.html" 
       },
-      "url": "https://flipcoin-5ag.pages.dev/index.html" 
-    }
+      "url": "https://flipcoin-5ag.pages.dev/index.html",
+      "author": {
+        "@type": "Organization",
+        "name": "zezeStudio"
+      },
+      "keywords": "coin flip, decision maker, random choice, yes or no, material design, Web Crypto API, free tool, online coin toss, 한국어, English, 日本語, Deutsch, Español, 中文",
+      "inLanguage": ["en", "ko", "ja", "de", "es", "zh"]
+    }, {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "Is this coin flip truly random?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, absolutely! CoinFlip uses the <strong>Web Crypto API</strong>, a robust browser feature designed for secure cryptographic randomness. This ensures that every flip is genuinely unpredictable and unbiased, mirroring the true randomness of a physical coin toss."
+        }
+      },{
+        "@type": "Question",
+        "name": "Does this app work offline?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Currently, CoinFlip requires an internet connection to load initially due to external script dependencies (like Tailwind CSS and Material Icons). While we aim for future offline capability, real-time functionality requires online access."
+        }
+      },{
+        "@type": "Question",
+        "name": "Is my data stored or shared?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Your flip history and session statistics are stored locally on your device's browser storage (localStorage). This data is never transmitted to our servers or shared with any third parties. You have full control to clear it at any time."
+        }
+      },{
+        "@type": "Question",
+        "name": "Can I use this tool for serious decisions?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "CoinFlip is designed for entertainment and assisting with minor, everyday choices. While it provides genuinely random outcomes, we do not recommend using it for critical life decisions, financial matters, or situations requiring professional advice. Always exercise good judgment."
+        }
+      },{
+        "@type": "Question",
+        "name": "Why do results sometimes feel streaky (e.g., many 'Yes' in a row)?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "This is a common psychological phenomenon! Even truly random sequences can have 'streaks' of identical outcomes. Each coin flip is an independent event with a 50/50 chance, so a series of 'Yes' results is statistically just as likely as an alternating pattern. It's simply the nature of randomness!"
+        }
+      }]
+    }]
     </script>
     <!-- Material Design Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
