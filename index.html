@@ -1,14 +1,355 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hello World</title>
-  <link href='/style.css' rel='stylesheet'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-key="app_title">CoinFlip</title>
+    <!-- Material Design Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Google Fonts for a clean, modern look -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Tailwind Config for Material Design feel -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6200EE', // Deep Purple
+                        primaryLight: '#BB86FC',
+                        secondary: '#03DAC6', // Teal
+                        background: '#F5F5F5', // Light Gray
+                        surface: '#FFFFFF', // White
+                        error: '#B00020', // Red
+                        onPrimary: '#FFFFFF',
+                        onSecondary: '#000000',
+                        onBackground: '#000000',
+                        onSurface: '#000000',
+                        onError: '#FFFFFF',
+                    },
+                    fontFamily: {
+                        sans: ['Roboto', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'md-light': '0 2px 4px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24)',
+                        'lg-light': '0 4px 8px rgba(0, 0, 0, 0.16), 0 4px 8px rgba(0, 0, 0, 0.23)',
+                    },
+                    borderRadius: {
+                        'xl': '1rem',
+                        '2xl': '2rem',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Confetti.js CDN for particle effects -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 </head>
-<body>
-  <h1>Hello, world!</h1>
-  <button onclick="console.log('hello');">Press me</button>
-  <script defer type="text/javascript" src="/main.js"></script>
+<body class="bg-background text-onBackground font-sans antialiased">
+
+    <!-- Navigation Bar -->
+    <nav class="fixed top-0 left-0 right-0 bg-surface shadow-md-light z-50">
+        <div class="max-w-md mx-auto px-4 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+                <span class="material-icons text-primary">toll</span>
+                <span class="text-xl font-medium text-onSurface" data-key="app_name">CoinFlip</span>
+            </div>
+            <button id="menu-toggle" class="p-2 rounded-full hover:bg-primaryLight/20 focus:outline-none focus:ring-2 focus:ring-primaryLight">
+                <span class="material-icons text-onSurface">menu</span>
+            </button>
+        </div>
+        <div id="scroll-progress" class="absolute bottom-0 left-0 h-1 bg-secondary w-0"></div>
+    </nav>
+
+    <!-- Language Selection Hint (moved to top of page) -->
+    <div class="bg-red-100 py-2 text-center text-red-700 font-bold" data-key="language_selection_hint"></div>
+
+    <!-- Sidebar Menu -->
+    <div id="sidebar-menu" class="fixed top-0 right-0 h-full w-64 bg-surface shadow-lg transform translate-x-full transition-transform duration-300 ease-in-out z-50">
+        <div class="flex items-center justify-between p-4 border-b border-gray-200">
+            <span class="text-lg font-medium" data-key="menu_sidebar_title">Menu</span>
+            <button id="close-menu" class="p-2 rounded-full hover:bg-primaryLight/20 focus:outline-none focus:ring-2 focus:ring-primaryLight">
+                <span class="material-icons text-onSurface">close</span>
+            </button>
+        </div>
+        <ul class="p-4 space-y-2">
+            <li><button id="view-history-button" class="block w-full text-left p-2 rounded-md hover:bg-primaryLight/20 text-onSurface" data-key="view_history_menu">View History</button></li>
+            <li class="py-2"><hr class="border-gray-200"></li>
+            <li>
+                <span class="block text-sm text-gray-500 mb-2" data-key="language_select_label">Language</span>
+                <div class="grid grid-cols-2 gap-2"> <!-- Changed to grid for better layout of many buttons -->
+                    <button class="lang-btn p-2 rounded-md bg-primary text-onPrimary shadow-md-light" data-lang="en">English</button>
+                    <button class="lang-btn p-2 rounded-md bg-background text-onBackground border border-gray-300" data-lang="ko">한국어</button>
+                    <button class="lang-btn p-2 rounded-md bg-background text-onBackground border border-gray-300" data-lang="ja">日本語</button>
+                    <button class="lang-btn p-2 rounded-md bg-background text-onBackground border border-gray-300" data-lang="de">Deutsch</button>
+                    <button class="lang-btn p-2 rounded-md bg-background text-onBackground border border-gray-300" data-lang="es">Español</button>
+                    <button class="lang-btn p-2 rounded-md bg-background text-onBackground border border-gray-300" data-lang="zh">中文</button>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"></div>
+
+    <!-- Main Content -->
+    <main class="max-w-md mx-auto py-20 px-4">
+        <!-- Hero Section -->
+        <section class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-onBackground mb-2" data-key="main_title">Make Decisions with Confidence</h1>
+            <p class="text-lg text-gray-600" data-key="main_description">A fair and simple coin flip for all your quick decisions.</p>
+        </section>
+
+        <!-- About CoinFlip Section (Collapsible) -->
+        <section class="bg-surface p-6 rounded-xl shadow-md-light mb-8">
+            <button id="about-toggle" class="w-full flex items-center justify-between text-lg font-medium text-onSurface focus:outline-none">
+                <span data-key="about_title">About CoinFlip</span>
+                <span id="about-icon" class="material-icons transition-transform duration-300">expand_more</span>
+            </button>
+            <div id="about-content" class="overflow-hidden transition-all duration-300 ease-in-out max-h-0 opacity-0">
+                <div class="pt-4 text-gray-700 space-y-4">
+                    <p data-key="about_p1">Life is full of choices, from the small and simple to the life-altering. CoinFlip is a beautifully designed digital tool created to help you make those choices with confidence and a touch of fun. It’s more than just an app; it's your personal decision-making companion, ready to provide a clear, unbiased answer whenever you need it.</p>
+                    <p data-key="about_p2">We've reimagined the classic coin toss for the modern age. Instead of 'Heads' or 'Tails', we provide a definitive 'Yes' or 'No'. This simple but powerful change removes ambiguity and helps frame your questions for a clearer outcome. Should you take that new job? Is it your turn to do the dishes? Ask your question, flip the coin, and receive a straightforward answer, empowering you to move forward.</p>
+                    <p data-key="about_p3">At the heart of CoinFlip lies a commitment to absolute fairness. We don't use simple, predictable computer-generated numbers. Instead, every flip is powered by the <strong>Web Crypto API</strong>, a highly secure web standard used for cryptographic operations. This ensures that each 'Yes' or 'No' result is truly random and statistically unpredictable, providing a foundation of trust for your most important decisions.</p>
+                    <ul class="list-disc list-inside text-gray-700 space-y-2">
+                        <li data-key="about_li1"><strong>Session Statistics:</strong> Go beyond a single flip. Our real-time statistics track your session's total flips, 'Yes' and 'No' counts, and ratio breakdowns, offering a fun look at your decision-making patterns.</li>
+                        <li data-key="about_li2"><strong>Detailed Flip Log:</strong> Every decision is recorded in a time-stamped log. This is perfect for holding friends accountable for a bet or for reviewing the choices you've made throughout the day.</li>
+                        <li data-key="about_li4"><strong>Intuitive Interface:</strong> We believe a powerful tool should also be a pleasure to use. Our clean, minimalist design, combined with smooth animations, ensures an experience that is both simple and elegant.</li>
+                        <li data-key="about_li5"><strong>Multilingual Support:</strong> CoinFlip is designed for a global audience and is available in multiple languages to feel like a native tool, no matter where you are.</li>
+                    </ul>
+                    <p data-key="about_p5">Whether you're settling a friendly debate, gamifying your chores, or simply seeking a moment of random guidance, CoinFlip is built to be reliable, transparent, and always at your fingertips. It's decision-making, simplified.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Coin Flip Area -->
+        <section class="bg-surface p-6 rounded-xl shadow-md-light flex flex-col items-center justify-center mb-8">
+            <div id="coin-container" class="relative w-40 h-40 flex items-center justify-center mb-6">
+                <div id="coin" class="w-full h-full rounded-full bg-gray-300 flex items-center justify-center text-3xl font-bold text-gray-700 transition-transform duration-700 ease-out-back transform-style-3d">
+                    <div id="coin-front" class="absolute inset-0 backface-hidden flex flex-col items-center justify-center rounded-full bg-primary text-onPrimary">
+                        <span class="text-3xl font-bold" data-key="heads_coin_face">Yes</span>
+                        <span class="material-icons text-5xl mt-1">savings</span>
+                    </div>
+                    <div id="coin-back" class="absolute inset-0 backface-hidden transform rotate-y-180 flex flex-col items-center justify-center rounded-full bg-gray-400 text-gray-700">
+                        <span class="text-3xl font-bold" data-key="tails_coin_face">No</span>
+                        <span class="material-icons text-5xl mt-1">pets</span>
+                    </div>
+                </div>
+            </div>
+            
+            <button id="flip-button" class="bg-primary text-onPrimary py-3 px-8 rounded-full text-lg font-medium shadow-lg-light hover:bg-primaryLight transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primaryLight">
+                <span data-key="flip_now">Flip Coin</span>
+            </button>
+        </section>
+
+        <!-- Statistics Section -->
+        <section class="bg-surface p-6 rounded-xl shadow-md-light mb-8">
+            <h2 class="text-xl font-medium text-onSurface mb-4" data-key="stats_title">Session Statistics</h2>
+            <div class="grid grid-cols-3 gap-4 text-center mb-6">
+                <div>
+                    <div class="text-3xl font-bold text-primary" id="total-flips">0</div>
+                    <div class="text-sm text-gray-600" data-key="total_flips_label">Total Flips</div>
+                </div>
+                <div>
+                    <div class="text-3xl font-bold text-secondary" id="heads-count">0</div>
+                    <div class="text-sm text-gray-600" data-key="heads_label">Heads</div>
+                </div>
+                <div>
+                    <div class="text-3xl font-bold text-primaryLight" id="tails-count">0</div>
+                    <div class="text-sm text-gray-600" data-key="tails_label">Tails</div>
+                </div>
+            </div>
+            
+            <div class="space-y-4">
+                <div>
+                    <div class="flex justify-between items-center mb-1">
+                        <span class="text-gray-700" data-key="heads_ratio_label">Heads Ratio</span>
+                        <span id="heads-ratio-percent" class="font-medium text-primary">0%</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2">
+                        <div id="heads-ratio-bar" class="bg-primary h-2 rounded-full transition-all duration-300 ease-out" style="width: 0%;"></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex justify-between items-center mb-1">
+                        <span class="text-gray-700" data-key="tails_ratio_label">Tails Ratio</span>
+                        <span id="tails-ratio-percent" class="font-medium text-primaryLight">0%</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2">
+                        <div id="tails-ratio-bar" class="bg-primaryLight h-2 rounded-full transition-all duration-300 ease-out" style="width: 0%;"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-6 text-center">
+                <button id="reset-button" class="text-primary hover:text-primaryLight font-medium focus:outline-none" data-key="reset_session">Reset Session</button>
+            </div>
+        </section>
+
+        <!-- Flip Log -->
+        <section class="bg-surface p-6 rounded-xl shadow-md-light mb-8">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-xl font-medium text-onSurface" data-key="log_title">Flip Log</h2>
+                <button id="clear-log-button" class="text-primary hover:text-primaryLight font-medium focus:outline-none" data-key="clear_log_btn">Clear Log</button>
+            </div>
+            <div id="log-container" class="space-y-3">
+                <!-- Log entries will be injected here by JavaScript -->
+                <p class="text-gray-500 text-center" data-key="no_flips_yet">No flips yet.</p>
+            </div>
+        </section>
+
+        <!-- AdSense Content Sections -->
+        <section class="space-y-8 mb-8">
+            <!-- Service Purpose & Scope of Responsibility -->
+            <div class="bg-surface p-6 rounded-xl shadow-md-light">
+                <h2 class="text-xl font-medium text-onSurface mb-4" data-key="service_purpose_title">Service Purpose & Scope of Responsibility</h2>
+                <div class="text-gray-700 space-y-4">
+                    <p data-key="service_purpose_p1">CoinFlip is designed as a simple, engaging tool to assist with minor decisions or to add an element of chance to everyday scenarios. It utilizes advanced cryptographic randomness for fairness, but is intended for entertainment and lighthearted decision-making, not for critical or high-stakes choices.</p>
+                    <p data-key="service_purpose_p2">Users are solely responsible for decisions made based on CoinFlip's outcomes. We encourage mindful use and advise against using this tool for situations that require serious consideration, professional advice, or have significant financial/personal implications.</p>
+                </div>
+            </div>
+
+            <!-- Data & Log Handling -->
+            <div class="bg-surface p-6 rounded-xl shadow-md-light">
+                <h2 class="text-xl font-medium text-onSurface mb-4" data-key="data_log_title">Data & Log Handling</h2>
+                <div class="text-gray-700 space-y-4">
+                    <p data-key="data_log_p1">CoinFlip respects your privacy. All session data, including your flip history and statistics, is stored exclusively on your device within your browser's local storage. This means your data never leaves your device and is not collected, stored, or shared by us or any third parties.</p>
+                    <p data-key="data_log_p2">You have full control over your data. You can clear your entire flip log and session statistics at any time using the 'Clear Log' or 'Reset Session' options within the application. Closing your browser or clearing your browser's cache may also remove this data.</p>
+                </div>
+            </div>
+
+            <!-- Technical Explanation & User Benefits -->
+            <div class="bg-surface p-6 rounded-xl shadow-md-light">
+                <h2 class="text-xl font-medium text-onSurface mb-4" data-key="tech_benefits_title">Technology & User Advantages</h2>
+                <div class="text-gray-700 space-y-4">
+                    <p data-key="tech_benefits_p1">CoinFlip leverages the powerful <strong>Web Crypto API</strong>, a state-of-the-art web standard for cryptographic operations. This ensures that every coin flip result is generated using a truly random, unpredictable, and secure process. Unlike simpler random number generators, our method guarantees an unbiased outcome, providing you with genuine fairness in every decision.</p>
+                    <p data-key="tech_benefits_p2">The benefit to you is absolute confidence in the impartiality of each flip. Whether it's a casual choice or a decisive moment, you can trust that CoinFlip's outcome is purely by chance, free from any discernible patterns or predictability, just like a real-world coin toss with enhanced digital integrity.</p>
+                </div>
+            </div>
+
+            <div class="bg-surface p-6 rounded-xl shadow-md-light">
+                <h2 class="text-xl font-medium text-onSurface mb-4" data-key="how_to_use_title">How to Use</h2>
+                <ol class="list-decimal list-inside text-gray-700 space-y-2">
+                    <li data-key="how_to_use_step1">Click the "Flip Coin" button to start.</li>
+                    <li data-key="how_to_use_step2">Observe the coin's animation.</li>
+                    <li data-key="how_to_use_step3">Check the result and updated statistics.</li>
+                </ol>
+            </div>
+
+            <div class="bg-surface p-6 rounded-xl shadow-md-light">
+                <h2 class="text-xl font-medium text-onSurface mb-4" data-key="use_cases_title">Use Cases</h2>
+                <ul class="list-disc list-inside text-gray-700 space-y-2">
+                    <li data-key="use_case_menu_decision">Deciding on a meal or activity.</li>
+                    <li data-key="use_case_team_consensus">Fairly choosing teams or roles.</li>
+                    <li data-key="use_case_order_setting">Determining turns or sequence.</li>
+                    <li data-key="use_case_fair_random_choice">Any situation requiring a truly unbiased random choice.</li>
+                </ul>
+            </div>
+
+            <div class="bg-primary text-onPrimary p-6 rounded-xl shadow-md-light">
+                <h2 class="text-xl font-medium mb-4" data-key="guide_title">Detailed Guide</h2>
+                <div class="text-primaryLight space-y-4">
+                    <p data-key="guide_p2">For unparalleled security, our app employs the <strong>Web Crypto API</strong>, a robust web standard, guaranteeing cryptographically secure and unpredictable random number generation. This ensures each flip is genuinely fair, driven by real probability rather than mere visual effects.</p>
+                </div>
+            </div>
+            
+            <!-- FAQ Section -->
+            <div class="bg-surface p-6 rounded-xl shadow-md-light">
+                <h2 class="text-xl font-medium text-onSurface mb-4" data-key="faq_title">Frequently Asked Questions (FAQ)</h2>
+                <div class="text-gray-700 space-y-4">
+                    <h3 class="text-lg font-medium" data-key="faq_q1">Is this coin flip truly random?</h3>
+                    <p data-key="faq_a1">Yes, absolutely! CoinFlip uses the <strong>Web Crypto API</strong>, a robust browser feature designed for secure cryptographic randomness. This ensures that every flip is genuinely unpredictable and unbiased, mirroring the true randomness of a physical coin toss.</p>
+                    <h3 class="text-lg font-medium" data-key="faq_q2">Does this app work offline?</h3>
+                    <p data-key="faq_a2">Currently, CoinFlip requires an internet connection to load initially due to external script dependencies (like Tailwind CSS and Material Icons). While we aim for future offline capability, real-time functionality requires online access.</p>
+                    <h3 class="text-lg font-medium" data-key="faq_q3">Is my data stored or shared?</h3>
+                    <p data-key="faq_a3">No. Your flip history and session statistics are stored locally on your device's browser storage (localStorage). This data is never transmitted to our servers or shared with any third parties. You have full control to clear it at any time.</p>
+                    <h3 class="text-lg font-medium" data-key="faq_q4">Can I use this tool for serious decisions?</h3>
+                    <p data-key="faq_a4">CoinFlip is designed for entertainment and assisting with minor, everyday choices. While it provides genuinely random outcomes, we do not recommend using it for critical life decisions, financial matters, or situations requiring professional advice. Always exercise good judgment.</p>
+                    <h3 class="text-lg font-medium" data-key="faq_q5">Why do results sometimes feel streaky (e.g., many 'Yes' in a row)?</h3>
+                    <p data-key="faq_a5">This is a common psychological phenomenon! Even truly random sequences can have 'streaks' of identical outcomes. Each coin flip is an independent event with a 50/50 chance, so a series of 'Yes' results is statistically just as likely as an alternating pattern. It's simply the nature of randomness!</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-surface text-onSurface py-8 px-4 shadow-md-light">
+        <div class="max-w-md mx-auto text-center text-sm">
+            <div class="flex justify-center space-x-4 mb-4">
+                <a href="#" class="text-primary hover:text-primaryLight" data-key="privacy_policy">Privacy Policy</a>
+                <a href="#" class="text-primary hover:text-primaryLight" data-key="terms_of_service">Terms of Service</a>
+                <a href="#" class="text-primary hover:text-primaryLight" data-key="contact_us">Contact Us</a>
+            </div>
+            <p class="text-gray-600 mb-2" data-key="footer_disclaimer">This tool is for entertainment and decision-making assistance only. We are not responsible for any outcomes or decisions made using this app.</p>
+            <p class="text-gray-500 font-medium" data-key="footer_copyright">&copy; 2024 CoinFlip. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- History Modal -->
+    <div id="history-modal-container" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center hidden">
+        <div class="bg-surface p-6 rounded-xl shadow-lg-light w-11/12 max-w-sm">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-xl font-medium text-onSurface" data-key="history_modal_title">Flip History</h2>
+                <button id="close-history-modal" class="p-2 rounded-full hover:bg-primaryLight/20 focus:outline-none focus:ring-2 focus:ring-primaryLight">
+                    <span class="material-icons text-onSurface">close</span>
+                </button>
+            </div>
+            <div id="history-list" class="max-h-80 overflow-y-auto space-y-3 mb-4">
+                <!-- History items will be injected here by JavaScript -->
+                <p class="text-gray-500 text-center" data-key="no_history_yet">No history available.</p>
+            </div>
+            <button id="clear-all-history" class="w-full bg-error text-onError py-2 rounded-md font-medium shadow-md-light hover:bg-error/80 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-error" data-key="clear_all_history_btn">Clear All History</button>
+        </div>
+    </div>
+
+    <!-- Generic Content Modal -->
+    <div id="generic-content-modal-container" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center hidden">
+        <div class="bg-surface p-6 rounded-xl shadow-lg-light w-11/12 max-w-lg max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-4">
+                <h2 id="generic-content-modal-title" class="text-xl font-medium text-onSurface"></h2>
+                <button id="close-generic-content-modal" class="p-2 rounded-full hover:bg-primaryLight/20 focus:outline-none focus:ring-2 focus:ring-primaryLight">
+                    <span class="material-icons text-onSurface">close</span>
+                </button>
+            </div>
+            <div id="generic-content-modal-body" class="text-gray-700 space-y-4">
+                <!-- Content will be injected here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-6 right-6 bg-secondary text-onSecondary p-3 rounded-full shadow-lg-light transition-opacity duration-300 opacity-0 invisible hover:bg-secondary/80 focus:outline-none focus:ring-2 focus:ring-secondary">
+        <span class="material-icons">arrow_upward</span>
+    </button>
+
+    <!-- JavaScript -->
+    <script src="main.js" defer></script>
+
+    <!-- Hidden content for legal/contact pages -->
+    <div id="privacy-policy-content" class="hidden">
+        <h3 class="text-lg font-medium mb-2" data-key="privacy_policy_title">개인정보처리방침</h3>
+        <p data-key="privacy_policy_p1">코인플립 앱은 사용자 개인 정보를 존중하며 보호하기 위해 최선을 다합니다.</p>
+        <p data-key="privacy_policy_p2">이 앱은 어떠한 개인 식별 정보도 수집, 저장 또는 공유하지 않습니다. 모든 플립 기록 및 세션 통계는 전적으로 사용자 기기의 브라우저 로컬 저장소에 저장됩니다. 이는 사용자의 데이터가 기기를 벗어나지 않으며, 당사 또는 제3자에 의해 수집, 저장 또는 공유되지 않음을 의미합니다.</p>
+        <p data-key="privacy_policy_p3">사용자는 언제든지 앱 내의 '기록 지우기' 또는 '세션 초기화' 옵션을 사용하여 자신의 데이터를 완전히 제어하고 삭제할 수 있습니다. 브라우저를 닫거나 브라우저 캐시를 지우면 이 데이터도 제거될 수 있습니다.</p>
+        <p data-key="privacy_policy_p4">본 개인정보처리방침은 앱 업데이트 또는 법적 요구사항 변경에 따라 수정될 수 있습니다. 중요한 변경 사항이 있을 경우 앱 내 공지사항을 통해 알려드립니다.</p>
+    </div>
+
+    <div id="terms-of-service-content" class="hidden">
+        <h3 class="text-lg font-medium mb-2" data-key="terms_of_service_title">서비스 약관</h3>
+        <p data-key="terms_of_service_p1">코인플립 앱(이하 '본 앱')을 이용해 주셔서 감사합니다. 본 앱은 오락 및 간단한 의사 결정을 돕기 위한 목적으로 제공됩니다.</p>
+        <p data-key="terms_of_service_p2">본 앱은 'Web Crypto API'를 사용하여 암호학적으로 안전한 무작위 결과를 제공하지만, 본 앱의 결과에 따른 어떠한 결정이나 결과에 대해서도 책임지지 않습니다. 중요한 결정이나 심각한 사안에는 본 앱을 사용하지 마십시오.</p>
+        <p data-key="terms_of_service_p3">본 앱의 모든 콘텐츠 및 기능은 저작권법 및 관련 법규의 보호를 받습니다. 본 앱의 무단 복제, 배포 또는 상업적 이용은 금지됩니다.</p>
+        <p data-key="terms_of_service_p4">본 약관은 사전 통지 없이 변경될 수 있으며, 변경된 약관은 앱 내 공지사항을 통해 효력이 발생합니다. 사용자는 정기적으로 약관을 검토할 책임이 있습니다.</p>
+    </div>
+
+    <div id="contact-us-content" class="hidden">
+        <h3 class="text-lg font-medium mb-2" data-key="contact_us_title">문의하기</h3>
+        <p data-key="contact_us_p1">코인플립 앱에 대한 질문, 제안 또는 문제가 있으시면 언제든지 문의해 주세요.</p>
+        <p data-key="contact_us_p2">현재는 별도의 문의 채널을 운영하고 있지 않습니다. 앱에 대한 피드백은 앱 스토어 리뷰를 통해 남겨주시거나, 개발자에게 직접 이메일을 보내주시면 감사하겠습니다.</p>
+        <p data-key="contact_us_p3">**개발자 이메일:** zezeteam2026@gmail.com</p>
+        <p data-key="contact_us_p4">사용자 여러분의 소중한 의견은 앱 개선에 큰 도움이 됩니다.</p>
+    </div>
+
 </body>
 </html>
