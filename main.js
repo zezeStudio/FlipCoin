@@ -999,4 +999,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     updateDisplay(); // Initial display update
+    (adsbygoogle = window.adsbygoogle || []).push({});
 });
