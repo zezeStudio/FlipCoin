@@ -66,6 +66,42 @@
     <!-- Custom Styles -->
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="favicon.png">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <!-- Tailwind Config for Material Design feel -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6200EE', // Deep Purple
+                        primaryLight: '#BB86FC',
+                        secondary: '#03DAC6', // Teal
+                        background: '#F5F5F5', // Light Gray
+                        surface: '#FFFFFF', // White
+                        error: '#B00020', // Red
+                        onPrimary: '#FFFFFF',
+                        onSecondary: '#000000',
+                        onBackground: '#000000',
+                        onSurface: '#000000',
+                        onError: '#FFFFFF',
+                    },
+                    fontFamily: {
+                        sans: ['Roboto', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'md-light': '0 2px 4px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24)',
+                        'lg-light': '0 4px 8px rgba(0, 0, 0, 0.16), 0 4px 8px rgba(0, 0, 0, 0.23)',
+                    },
+                    borderRadius: {
+                        'xl': '1rem',
+                        '2xl': '2rem',
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 </head>
 <body class="bg-background text-onBackground font-sans antialiased">
 
@@ -342,41 +378,6 @@
         <span class="material-icons">arrow_upward</span>
     </button>
 
-    <!-- Performance optimized JavaScripts -->
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries" defer></script>
-    <!-- Tailwind Config for Material Design feel -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#6200EE', // Deep Purple
-                        primaryLight: '#BB86FC',
-                        secondary: '#03DAC6', // Teal
-                        background: '#F5F5F5', // Light Gray
-                        surface: '#FFFFFF', // White
-                        error: '#B00020', // Red
-                        onPrimary: '#FFFFFF',
-                        onSecondary: '#000000',
-                        onBackground: '#000000',
-                        onSurface: '#000000',
-                        onError: '#FFFFFF',
-                    },
-                    fontFamily: {
-                        sans: ['Roboto', 'sans-serif'],
-                    },
-                    boxShadow: {
-                        'md-light': '0 2px 4px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24)',
-                        'lg-light': '0 4px 8px rgba(0, 0, 0, 0.16), 0 4px 8px rgba(0, 0, 0, 0.23)',
-                    },
-                    borderRadius: {
-                        'xl': '1rem',
-                        '2xl': '2rem',
-                    }
-                }
-            }
-        }
-    </script>
     <!-- Confetti.js CDN for particle effects -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js" defer></script>
     <script type="text/javascript" defer>
