@@ -624,16 +624,20 @@ function updateDisplay() {
     renderLog();
     renderHistory();
 
-    if (totalFlips > 0) {
-        noFlipsYetMessage.classList.add('hidden');
-    } else {
-        noFlipsYetMessage.classList.remove('hidden');
+    if (noFlipsYetMessage) {
+        if (totalFlips > 0) {
+            noFlipsYetMessage.classList.add('hidden');
+        } else {
+            noFlipsYetMessage.classList.remove('hidden');
+        }
     }
 
-    if (logEntries.length > 0) {
-        noHistoryYetMessage.classList.add('hidden');
-    } else {
-        noHistoryYetMessage.classList.remove('hidden');
+    if (noHistoryYetMessage) {
+        if (logEntries.length > 0) {
+            noHistoryYetMessage.classList.add('hidden');
+        } else {
+            noHistoryYetMessage.classList.remove('hidden');
+        }
     }
 }
 
