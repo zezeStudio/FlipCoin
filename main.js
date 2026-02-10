@@ -592,7 +592,6 @@ const tailsRatioPercent = document.getElementById('tails-ratio-percent');
 const resetButton = document.getElementById('reset-button');
 const logContainer = document.getElementById('log-container');
 const clearLogButton = document.getElementById('clear-log-button');
-const noFlipsYetMessage = document.querySelector('[data-key="no_flips_yet"]');
 
 // History Modal elements
 const viewHistoryButton = document.getElementById('view-history-button');
@@ -600,7 +599,10 @@ const historyModalContainer = document.getElementById('history-modal-container')
 const closeHistoryModalButton = document.getElementById('close-history-modal');
 const historyList = document.getElementById('history-list');
 const clearAllHistoryButton = document.getElementById('clear-all-history');
-const noHistoryYetMessage = document.querySelector('[data-key="no_history_yet"]');
+
+// New declarations for the missing elements
+const noFlipsYetMessage = document.getElementById('no-flips-yet-message');
+const noHistoryYetMessage = document.getElementById('no-history-yet-message');
 
 // Generic Content Modal elements
 const genericContentModalContainer = document.getElementById('generic-content-modal-container');
@@ -691,9 +693,13 @@ function addLogEntry(outcome) {
 function renderLog() {
     logContainer.innerHTML = ''; // Clear current log
     if (logEntries.length === 0) {
-        noFlipsYetMessage.classList.remove('hidden');
+        if (noFlipsYetMessage) {
+            noFlipsYetMessage.classList.remove('hidden');
+        }
     } else {
-        noFlipsYetMessage.classList.add('hidden');
+        if (noFlipsYetMessage) {
+            noFlipsYetMessage.classList.add('hidden');
+        }
         logEntries.forEach(entry => {
             const logItem = document.createElement('div');
             logItem.classList.add('flex', 'items-center', 'space-x-2', 'p-2', 'bg-background', 'rounded-md', 'shadow-sm');
