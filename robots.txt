@@ -4,4 +4,4 @@ Allow: /
 User-agent: Yeti
 Allow: /
 
-Sitemap: https://yourdomain.com/sitemap.xml
+Sitemap: https://flipcoin-5ag.pages.dev/sitemap.xml
