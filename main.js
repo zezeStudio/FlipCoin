@@ -87,7 +87,7 @@ const translations = {
         "terms_of_service_title_modal": "Terms of Service",
         "terms_of_service_content_modal": "This is a placeholder for the Terms of Service content. Please replace this with your actual terms of service. Thank you for using the CoinFlip app. This app is provided for entertainment and simple decision-making assistance. While the app uses the 'Web Crypto API' to provide cryptographically secure random results, we are not responsible for any decisions or outcomes based on the app's results. Do not use this app for important decisions or serious matters. All content and features of this app are protected by copyright laws and related regulations. Unauthorized reproduction, distribution, or commercial use of this app is prohibited. These terms may be changed without prior notice, and the revised terms will take effect through announcements within the app. Users are responsible for regularly reviewing the terms.",
         "contact_us_title_modal": "Contact Us",
-        "contact_us_content_modal": "This is a placeholder for the Contact Us content. Please replace this with your actual contact information. If you have any questions, suggestions, or issues regarding the CoinFlip app, please feel free to contact us. Currently, we do not operate a separate contact channel. We appreciate your feedback via app store reviews or by sending an email directly to the developer. Developer Email: developer@example.com (This is an example email. Please change to an actual email.) Your valuable feedback helps us improve the app."
+        "contact_us_content_modal": "This is a placeholder for the Contact Us content. Please replace this with your actual contact information. If you have any questions, suggestions, or issues regarding the CoinFlip app, please feel free to contact us. Currently, we do not operate a separate contact channel. We appreciate your feedback via app store reviews or by sending an email directly to the developer. Developer Email: zezeteam2026@gmail.com Your valuable feedback helps us improve the app."
     },
     "ko": {
         "app_title": "코인플립 - Material 디자인",
@@ -176,7 +176,7 @@ const translations = {
         "terms_of_service_title_modal": "서비스 약관",
         "terms_of_service_content_modal": "코인플립 앱(이하 '본 앱')을 이용해 주셔서 감사합니다. 본 앱은 오락 및 간단한 의사 결정을 돕기 위한 목적으로 제공됩니다.<br><br>본 앱은 'Web Crypto API'를 사용하여 암호학적으로 안전한 무작위 결과를 제공하지만, 본 앱의 결과에 따른 어떠한 결정이나 결과에 대해서도 책임지지 않습니다. 중요한 결정이나 심각한 사안에는 본 앱을 사용하지 마십시오.<br><br>본 앱의 모든 콘텐츠 및 기능은 저작권법 및 관련 법규의 보호를 받습니다. 본 앱의 무단 복제, 배포 또는 상업적 이용은 금지됩니다.<br><br>본 약관은 사전 통지 없이 변경될 수 있으며, 변경된 약관은 앱 내 공지사항을 통해 효력이 발생합니다. 사용자는 정기적으로 약관을 검토할 책임이 있습니다.",
         "contact_us_title_modal": "문의하기",
-        "contact_us_content_modal": "코인플립 앱에 대한 질문, 제안 또는 문제가 있으시면 언제든지 문의해 주세요.<br><br>현재는 별도의 문의 채널을 운영하고 있지 않습니다. 앱에 대한 피드백은 앱 스토어 리뷰를 통해 남겨주시거나, 개발자에게 직접 이메일을 보내주시면 감사하겠습니다.<br><br>**개발자 이메일:** developer@example.com (예시 이메일입니다. 실제 이메일로 변경해야 합니다.)<br><br>사용자 여러분의 소중한 의견은 앱 개선에 큰 도움이 됩니다."
+        "contact_us_content_modal": "코인플립 앱에 대한 질문, 제안 또는 문제가 있으시면 언제든지 문의해 주세요.<br><br>현재는 별도의 문의 채널을 운영하고 있지 않습니다. 앱에 대한 피드백은 앱 스토어 리뷰를 통해 남겨주시거나, 개발자에게 직접 이메일을 보내주시면 감사하겠습니다.<br><br>**개발자 이메일:** zezeteam2026@gmail.com<br><br>사용자 여러분의 소중한 의견은 앱 개선에 큰 도움이 됩니다."
     },
     "ja": { // Japanese
         "app_title": "CoinFlip - マテリアルデザイン",
@@ -265,7 +265,7 @@ const translations = {
         "terms_of_service_title_modal": "利用規約",
         "terms_of_service_content_modal": "これは利用規約コンテンツのプレースホルダーです。実際の利用規約に置き換えてください。CoinFlipアプリをご利用いただきありがとうございます。このアプリは、エンターテイメントおよび簡単な意思決定支援のために提供されています。このアプリは「Web Crypto API」を使用して暗号学的に安全なランダムな結果を提供しますが、アプリの結果に基づく決定や結果については一切責任を負いません。重要な決定や深刻な事柄にはこのアプリを使用しないでください。このアプリのすべてのコンテンツおよび機能は、著作権法および関連法規によって保護されています。このアプリの無断複製、配布、または商業目的での使用は禁止されています。これらの規約は事前の通知なしに変更されることがあり、改訂された規約はアプリ内のお知らせを通じて有効になります。ユーザーは定期的に規約を確認する責任があります。",
         "contact_us_title_modal": "お問い合わせ",
-        "contact_us_content_modal": "これはお問い合わせコンテンツのプレースホルダーです。実際の連絡先情報に置き換えてください。CoinFlipアプリに関するご質問、ご提案、または問題がございましたら、お気軽にお問い合わせください。現在、個別の問い合わせチャネルは運営しておりません。アプリストアのレビューを通じてフィードバックをいただくか、開発者に直接メールでお問い合わせください。開発者メール：developer@example.com (これは例示のメールアドレスです。実際のメールアドレスに変更してください。) ユーザーの皆様からの貴重なご意見は、アプリの改善に役立ちます。"
+        "contact_us_content_modal": "これはお問い合わせコンテンツのプレースホルダーです。実際の連絡先情報に置き換えてください。CoinFlipアプリに関するご質問、ご提案、または問題がございましたら、お気軽にお問い合わせください。現在、個別の問い合わせチャネルは運営しておりません。アプリストアのレビューを通じてフィードバックをいただくか、開発者に直接メールでお問い合わせください。開発者メール：zezeteam2026@gmail.com ユーザーの皆様からの貴重なご意見は、アプリの改善に役立ちます。"
     },
     "de": { // German
         "app_title": "CoinFlip - Material Design",
@@ -354,7 +354,7 @@ const translations = {
         "terms_of_service_title_modal": "Nutzungsbedingungen",
         "terms_of_service_content_modal": "Dies ist ein Platzhalter für den Inhalt der Nutzungsbedingungen. Bitte ersetzen Sie diesen durch Ihre tatsächlichen Nutzungsbedingungen. Vielen Dank für die Nutzung der CoinFlip-App. Diese App dient der Unterhaltung und einfachen Entscheidungsfindung. Obwohl die App die „Web Crypto API“ verwendet, um kryptografisch sichere Zufallsergebnisse zu liefern, übernehmen wir keine Verantwortung für Entscheidungen oder Ergebnisse, die auf den Ergebnissen der App basieren. Verwenden Sie diese App nicht für wichtige Entscheidungen oder ernste Angelegenheiten. Alle Inhalte und Funktionen dieser App sind durch Urheberrechtsgesetze und verwandte Vorschriften geschützt. Unerlaubte Vervielfältigung, Verbreitung oder kommerzielle Nutzung dieser App ist verboten. Diese Bedingungen können ohne vorherige Ankündigung geändert werden, und die überarbeiteten Bedingungen treten durch Ankündigungen innerhalb der App in Kraft. Benutzer sind dafür verantwortlich, die Bedingungen regelmäßig zu überprüfen.",
         "contact_us_title_modal": "Kontakt",
-        "contact_us_content_modal": "Dies ist ein Platzhalter für den Inhalt des Kontaktbereichs. Bitte ersetzen Sie diesen durch Ihre tatsächlichen Kontaktinformationen. Wenn Sie Fragen, Vorschläge oder Probleme bezüglich der CoinFlip-App haben, können Sie uns gerne kontaktieren. Derzeit betreiben wir keinen separaten Kontaktkanal. Wir freuen uns über Ihr Feedback über App-Store-Bewertungen oder indem Sie eine E-Mail direkt an den Entwickler senden. Entwickler-E-Mail: developer@example.com (Dies ist eine Beispiel-E-Mail. Bitte ändern Sie diese in eine tatsächliche E-Mail.) Ihr wertvolles Feedback hilft uns, die App zu verbessern."
+        "contact_us_content_modal": "Dies ist ein Platzhalter für den Inhalt des Kontaktbereichs. Bitte ersetzen Sie diesen durch Ihre tatsächlichen Kontaktinformationen. Wenn Sie Fragen, Vorschläge oder Probleme bezüglich der CoinFlip-App haben, können Sie uns gerne kontaktieren. Derzeit betreiben wir keinen separaten Kontaktkanal. Wir freuen uns über Ihr Feedback über App-Store-Bewertungen oder indem Sie eine E-Mail direkt an den Entwickler senden. Entwickler-E-Mail: zezeteam2026@gmail.com Ihr wertvolles Feedback hilft uns, die App zu verbessern."
     },
     "es": { // Spanish
         "app_title": "CoinFlip - Diseño Material",
@@ -443,7 +443,7 @@ const translations = {
         "terms_of_service_title_modal": "Términos de servicio",
         "terms_of_service_content_modal": "Este es un marcador de posición para el contenido de los Términos de servicio. Reemplace esto con sus términos de servicio reales. Gracias por usar la aplicación CoinFlip. Esta aplicación se proporciona para entretenimiento y asistencia sencilla en la toma de decisiones. Si bien la aplicación utiliza la 'API de Web Crypto' para proporcionar resultados aleatorios criptográficamente seguros, no somos responsables de las decisiones o resultados basados en los resultados de la aplicación. No use esta aplicación para decisiones importantes o asuntos serios. Todo el contenido y las características de esta aplicación están protegidos por las leyes de derechos de autor y las regulaciones relacionadas. La reproducción, distribución o uso comercial no autorizados de esta aplicación están prohibidos. Estos términos pueden modificarse sin previo aviso, y los términos revisados entrarán en vigro a través de anuncios dentro de la aplicación. Los usuarios son responsables de revisar los términos regularmente.",
         "contact_us_title_modal": "Contáctanos",
-        "contact_us_content_modal": "Este es un marcador de posición para el contenido de Contáctanos. Reemplace esto con su información de contacto real. Si tiene alguna pregunta, sugerencia o problema con la aplicación CoinFlip, no dude en contactarnos. Actualmente, no operamos un canal de contacto separado. Agradecemos sus comentarios a través de las reseñas de la tienda de aplicaciones o enviando un correo electrónico directamente al desarrollador. Correo electrónico del desarrollador: developer@example.com (Este es un correo electrónico de ejemplo. Cámbielo por un correo electrónico real.) Sus valiosos comentarios nos ayudan a mejorar la aplicación."
+        "contact_us_content_modal": "Este es un marcador de posición para el contenido de Contáctanos. Reemplace esto con su información de contacto real. Si tiene alguna pregunta, sugerencia o problema con la aplicación CoinFlip, no dude en contactarnos. Actualmente, no operamos un canal de contacto separado. Agradecemos sus comentarios a través de las reseñas de la tienda de aplicaciones o enviando un correo electrónico directamente al desarrollador. Correo electrónico del desarrollador: zezeteam2026@gmail.com Sus valiosos comentarios nos ayudan a mejorar la aplicación."
     },
     "zh": { // Chinese
         "app_title": "CoinFlip - 材料设计",
@@ -532,7 +532,7 @@ const translations = {
         "terms_of_service_title_modal": "服务条款",
         "terms_of_service_content_modal": "这是服务条款内容的占位符。请用您的实际服务条款替换此内容。感谢您使用CoinFlip应用程序。此应用程序旨在提供娱乐和简单的决策辅助。尽管此应用程序使用“Web Crypto API”提供加密安全的随机结果，但我们对基于应用程序结果的任何决定或结果概不负责。请勿将此应用程序用于重要决策或严肃事项。此应用程序的所有内容和功能均受版权法和相关法规的保护。禁止未经授权复制、分发或商业使用此应用程序。这些条款可能会在不另行通知的情况下更改，修订后的条款将通过应用程序内的公告生效。用户有责任定期审查条款。",
         "contact_us_title_modal": "联系我们",
-        "contact_us_content_modal": "这是联系我们内容的占位符。请用您的实际联系信息替换此内容。如果您对CoinFlip应用程序有任何疑问、建议或问题，请随时与我们联系。目前，我们不运营单独的联系渠道。我们感谢您通过应用商店评论提供反馈或直接向开发者发送电子邮件。开发者电子邮件：developer@example.com (这是一个示例电子邮件。请更改为实际电子邮件。) 您的宝贵反馈有助于我们改进应用程序。"
+        "contact_us_content_modal": "这是联系我们内容的占位符。请用您的实际联系信息替换此内容。如果您对CoinFlip应用程序有任何疑问、建议或问题，请随时与我们联系。目前，我们不运营单独的联系渠道。我们感谢您通过应用商店评论提供反馈或直接向开发者发送电子邮件。开发者电子邮件：zezeteam2026@gmail.com 您的宝贵反馈有助于我们改进应用程序。"
     }
 };
 
