@@ -1,1 +1,78 @@
-/* Add styles here */
+/* Custom Styles for Material Design aesthetic and Coin Flip Animation */
+
+/* Smooth scrolling for anchor links */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Coin Flip specific styles */
+#coin-container {
+    perspective: 1000px; /* Establishes a 3D context */
+}
+
+#coin {
+    transition: transform 0.6s ease-out; /* Smooth transition for the flip */
+    transform-style: preserve-3d; /* Ensures children are positioned in 3D space */
+}
+
+#coin-front, #coin-back {
+    backface-visibility: hidden; /* Hides the back of the element when facing away */
+}
+
+#coin-back {
+    transform: rotateY(180deg); /* Initially rotate the back face */
+}
+
+/* Animation for the flip */
+#coin.is-flipping {
+    animation: flip-spin 1.2s forwards; /* Adjust duration and easing as needed */
+}
+
+@keyframes flip-spin {
+    0% { transform: rotateY(0deg); }
+    100% { transform: rotateY(1800deg); } /* 5 full spins */
+}
+
+/* Pause animation on flip completion to show result */
+#coin.heads-result {
+    transform: rotateY(1800deg); /* Final rotation for Heads */
+}
+
+#log-container {
+    max-height: 300px; /* Adjust as needed to show ~5-6 entries before scrolling */
+    overflow-y: auto;
+}
+
+.max-h-unlimited {
+    max-height: 9999px; /* Effectively unlimited height for collapsible content */
+}
+
+#coin.tails-result {
+    transform: rotateY(1980deg); /* Final rotation for Tails (1800 + 180) */
+}
+
+
+button:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(98, 0, 238, 0.2); /* primary color with transparency */
+}
+
+/* Sidebar overlay transition */
+#sidebar-overlay.hidden {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+#sidebar-overlay:not(.hidden) {
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Back to Top Button visibility */
+#back-to-top.invisible {
+    opacity: 0;
+    visibility: hidden;
+}
+#back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
