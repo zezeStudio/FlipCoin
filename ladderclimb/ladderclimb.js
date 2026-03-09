@@ -13,7 +13,7 @@ const translations = {
         "reset_btn": "Reset",
         "sequential_btn": "Sequential Results",
         "all_results_btn": "Show All",
-        "result_title": "Result",
+        "result_title": "Results Summary",
         "fortune_disclaimer": "※ Please enjoy the results for entertainment purposes only.",
         "footer_copyright": "© 2024 Zeze Decision Hub.",
         "guide_title": "User Guide",
@@ -37,7 +37,7 @@ const translations = {
         "reset_btn": "다시 설정",
         "sequential_btn": "순차 결과 보기",
         "all_results_btn": "전체 결과",
-        "result_title": "결과 확인",
+        "result_title": "전체 결과 요약",
         "fortune_disclaimer": "※ 본 서비스의 결과는 재미로만 즐겨주시기 바랍니다.",
         "footer_copyright": "© 2024 Zeze Decision Hub.",
         "guide_title": "사용 가이드",
@@ -58,6 +58,7 @@ let results = [];
 let ladderData = []; // Array of vertical lines and their horizontal bars
 let isAnimating = false;
 let completedPlayers = new Set();
+let playerResultMap = {}; // Keep track of player results
 
 // Path Colors
 const playerColors = [
@@ -135,6 +136,7 @@ function setupLadder() {
     }
 
     completedPlayers.clear();
+    playerResultMap = {};
     generateLadderData();
     drawLadder();
     
@@ -243,9 +245,36 @@ function addClickZones(padding, colWidth, width, height) {
     }
 }
 
-async function startClimb(playerIndex, isSequential = false) {
-    if (isAnimating || completedPlayers.has(playerIndex)) return;
-    if (!isSequential) isAnimating = true;
+function renderResultSummary() {
+    resultSection.classList.remove('hidden');
+    let summaryHtml = '<div class="space-y-2 text-sm font-bold max-w-[300px] mx-auto mt-2">';
+    
+    // Sort completed indices to show them in order
+    const sortedIndices = Array.from(completedPlayers).sort((a, b) => a - b);
+    
+    sortedIndices.forEach(idx => {
+        const res = playerResultMap[idx];
+        const isWin = res.includes('당첨') || res.toLowerCase().includes('win');
+        const color = playerColors[idx % playerColors.length];
+        
+        summaryHtml += `
+            <div class="flex justify-between items-center p-3 rounded-xl bg-white/80 border border-gray-100 shadow-sm">
+                <span style="color: ${color}">${players[idx]}</span>
+                <span class="mx-2 text-gray-300">→</span>
+                <span class="${isWin ? 'text-secondary' : 'text-gray-400'}">${res}</span>
+            </div>`;
+    });
+    summaryHtml += '</div>';
+    
+    resultDisplay.innerHTML = summaryHtml;
+    resultDisplay.style.color = 'inherit';
+}
+
+async function startClimb(playerIndex, isMulti = false) {
+    if (isAnimating && !isMulti) return;
+    if (completedPlayers.has(playerIndex)) return;
+    
+    if (!isMulti) isAnimating = true;
     SoundManager.init();
 
     const padding = 40;
@@ -272,8 +301,8 @@ async function startClimb(playerIndex, isSequential = false) {
         ctx.moveTo(startX, startY);
         ctx.lineTo(startX, endY);
         ctx.stroke();
-        if (!isSequential || playerCount < 6) SoundManager.playTick();
-        await sleep(isSequential ? 20 : 40);
+        if (!isMulti || playerCount < 6) SoundManager.playTick();
+        await sleep(isMulti ? 20 : 40);
 
         if (currentCol > 0 && ladderData[currentCol - 1][currentRow]) {
             const endX = padding + (currentCol - 1) * colWidth;
@@ -282,7 +311,7 @@ async function startClimb(playerIndex, isSequential = false) {
             ctx.lineTo(endX, endY);
             ctx.stroke();
             currentCol--;
-            await sleep(isSequential ? 30 : 60);
+            await sleep(isMulti ? 30 : 60);
         } else if (currentCol < playerCount - 1 && ladderData[currentCol][currentRow]) {
             const endX = padding + (currentCol + 1) * colWidth;
             ctx.beginPath();
@@ -290,27 +319,22 @@ async function startClimb(playerIndex, isSequential = false) {
             ctx.lineTo(endX, endY);
             ctx.stroke();
             currentCol++;
-            await sleep(isSequential ? 30 : 60);
+            await sleep(isMulti ? 30 : 60);
         }
     }
 
     const finalResult = results[currentCol];
     completedPlayers.add(playerIndex);
-    
-    // Individual result display logic
-    if (!window.isAllDrawing) {
-        resultSection.classList.remove('hidden');
-        resultDisplay.innerHTML = `<span class="text-gray-500">${players[playerIndex]}</span> <span class="mx-2">→</span> <span>${finalResult}</span>`;
-        resultDisplay.style.color = pathColor;
-    }
+    playerResultMap[playerIndex] = finalResult;
     
     revealLadderResult(currentCol, finalResult, pathColor);
+    renderResultSummary();
     
     if (!window.isAllDrawing && (finalResult.includes('당첨') || finalResult.toLowerCase().includes('win'))) {
         confetti({ particleCount: 100, spread: 70, origin: { y: 0.8 }, colors: [pathColor, '#FFFFFF'] });
     }
 
-    if (!isSequential) isAnimating = false;
+    if (!isMulti) isAnimating = false;
     return { player: players[playerIndex], result: finalResult, color: pathColor };
 }
 
@@ -320,6 +344,7 @@ async function startSequentialClimb() {
     if (completedPlayers.size >= playerCount) {
         drawLadder();
         completedPlayers.clear();
+        playerResultMap = {};
         resultSection.classList.add('hidden');
     }
 
@@ -348,14 +373,14 @@ async function startSequentialClimb() {
 async function revealAllResults() {
     if (isAnimating) return;
     
-    // Reset if needed
     if (completedPlayers.size >= playerCount) {
         drawLadder();
         completedPlayers.clear();
+        playerResultMap = {};
     }
 
     isAnimating = true;
-    window.isAllDrawing = true; // Global flag to suppress individual confetti/text
+    window.isAllDrawing = true; 
     
     const sequentialBtn = document.getElementById('sequential-btn');
     const resetBtn = document.getElementById('reset-btn');
@@ -365,7 +390,6 @@ async function revealAllResults() {
     sequentialBtn.disabled = true;
     allResultsBtn.style.opacity = '0.5';
 
-    // Run all remaining paths in parallel
     const promises = [];
     for (let i = 0; i < playerCount; i++) {
         if (!completedPlayers.has(i)) {
@@ -373,34 +397,8 @@ async function revealAllResults() {
         }
     }
 
-    const allFinished = await Promise.all(promises);
+    await Promise.all(promises);
     
-    // Show total summary at the bottom
-    resultSection.classList.remove('hidden');
-    let summaryHtml = '<div class="grid grid-cols-2 gap-x-4 gap-y-2 text-left max-w-[280px] mx-auto mt-4">';
-    
-    // Get all results (including already completed ones)
-    // For simplicity, we just rebuild from the current state
-    for(let i=0; i < playerCount; i++) {
-        // Find which column this player ends up in (re-calculating is hard, so we'll store mapping)
-        // But for "All results", we just need to match player to their result
-        // We need to know which player ended in which result column.
-        // Let's modify startClimb to return mapping.
-    }
-    
-    // Display the finished list
-    summaryHtml = '<div class="space-y-2 text-sm font-bold">';
-    // We already have all results in the 'results' array but need to know which player got which
-    // The startClimb logic needs to return the result mapping.
-    
-    allFinished.forEach(res => {
-        summaryHtml += `<div style="color: ${res.color}">${res.player} : ${res.result}</div>`;
-    });
-    summaryHtml += '</div>';
-    
-    resultDisplay.innerHTML = summaryHtml;
-    resultDisplay.style.color = 'inherit';
-
     confetti({ particleCount: 150, spread: 100, origin: { y: 0.7 } });
 
     allResultsBtn.disabled = false;
@@ -410,6 +408,19 @@ async function revealAllResults() {
     isAnimating = false;
 }
 
+function revealLadderResult(colIndex, text, color = '#1F2937') {
+    const padding = 40;
+    const height = 400;
+    const colWidth = (320 - padding * 2) / (playerCount - 1);
+    const x = padding + colIndex * colWidth;
+    
+    ctx.font = 'bold 12px Roboto';
+    ctx.textAlign = 'center';
+    ctx.fillStyle = color;
+    ctx.clearRect(x - 25, height - padding + 5, 50, 30);
+    ctx.fillText(text, x, height - padding + 20);
+}
+
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -417,7 +428,7 @@ function sleep(ms) {
 function applyTranslations() {
     document.querySelectorAll('[data-key]').forEach(el => {
         const key = el.dataset.key;
-        if (translations[currentLang][key]) {
+        if (translations[currentLang] && translations[currentLang][key]) {
             el.innerHTML = translations[currentLang][key];
         }
     });
