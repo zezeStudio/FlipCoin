@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>동전 던지기 가이드 - Zeze Hub</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="coinflip.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6200EE',
+                        primaryLight: '#BB86FC',
+                        secondary: '#03DAC6',
+                        background: '#0A192F',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-white font-sans antialiased min-h-screen flex flex-col">
+    <!-- Navigation Bar -->
+    <nav class="fixed top-0 left-0 right-0 bg-white/5 backdrop-blur-md border-b border-white/10 z-50">
+        <div class="max-w-md mx-auto px-4 h-16 flex items-center space-x-2">
+            <a href="coinflip.html" class="p-2 -ml-2 rounded-full hover:bg-white/10 focus:outline-none flex items-center text-secondary">
+                <span class="material-icons">arrow_back</span>
+            </a>
+            <span class="text-xl font-bold text-secondary" data-key="guide_nav_title">동전 던지기 가이드</span>
+        </div>
+    </nav>
+
+    <main class="max-w-md mx-auto py-24 px-6 w-full flex-grow">
+        <section class="bg-white/5 p-6 rounded-3xl border border-white/10 shadow-lg">
+            <h2 class="text-2xl font-bold text-secondary mb-6 flex items-center gap-2">
+                <span class="material-icons">toll</span> <span data-key="guide_title">동전 던지기 사용법</span>
+            </h2>
+            
+            <div class="space-y-6 text-gray-300 text-sm leading-relaxed">
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-2" data-key="guide_step1_title">1. 코인 스킨 선택</h3>
+                    <p data-key="guide_step1_desc">골드, 비트코인, 하트, 고양이 등 당신의 취향에 맞는 동전 디자인을 선택해 보세요. 스킨마다 고유한 아이콘과 색상이 적용됩니다.</p>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-2" data-key="guide_step2_title">2. 결과 예측 (옵션)</h3>
+                    <p data-key="guide_step2_desc">동전을 던지기 전 '앞면' 혹은 '뒷면'을 미리 선택해 보세요. 예측에 성공하면 특별한 축하 효과와 함께 연승 기록이 쌓입니다.</p>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-2" data-key="guide_step3_title">3. 동전 던지기</h3>
+                    <p data-key="guide_step3_desc">하단의 [동전 던지기] 버튼을 누르세요. 실제 물리 엔진이 적용된 듯한 3D 애니메이션과 함께 동전이 공중으로 튀어 오릅니다.</p>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-2" data-key="guide_step4_title">4. 연승 기록 도전</h3>
+                    <p data-key="guide_step4_desc">예측에 연속으로 성공하여 나만의 최고 연승 기록(Streak)을 세워보세요! 결과는 이미지로 저장하거나 친구들에게 자랑할 수 있습니다.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const translations = {
+            "en": {
+                "guide_doc_title": "Coin Flip Guide - Zeze Hub",
+                "guide_nav_title": "Coin Flip Guide",
+                "guide_title": "How to Flip",
+                "guide_step1_title": "1. Choose Coin Skin",
+                "guide_step1_desc": "Select a design that fits your style, such as Gold, Bitcoin, Heart, or Cat. Each skin has unique icons and colors.",
+                "guide_step2_title": "2. Predict the Result (Optional)",
+                "guide_step2_desc": "Try to predict 'Heads' or 'Tails' before flipping. If you're right, you'll get special effects and build a win streak!",
+                "guide_step3_title": "3. Flip the Coin",
+                "guide_step3_desc": "Click the [Flip Coin] button. The coin will pop into the air with realistic 3D physics animation.",
+                "guide_step4_title": "4. Challenge your Streak",
+                "guide_step4_desc": "Try to achieve the highest win streak by predicting correctly multiple times in a row! Save your results or share them with friends."
+            },
+            "ko": {
+                "guide_doc_title": "동전 던지기 가이드 - Zeze Hub",
+                "guide_nav_title": "동전 던지기 가이드",
+                "guide_title": "동전 던지기 사용법",
+                "guide_step1_title": "1. 코인 스킨 선택",
+                "guide_step1_desc": "골드, 비트코인, 하트, 고양이 등 당신의 취향에 맞는 동전 디자인을 선택해 보세요. 스킨마다 고유한 아이콘과 색상이 적용됩니다.",
+                "guide_step2_title": "2. 결과 예측 (옵션)",
+                "guide_step2_desc": "동전을 던지기 전 '앞면' 혹은 '뒷면'을 미리 선택해 보세요. 예측에 성공하면 특별한 축하 효과와 함께 연승 기록이 쌓입니다.",
+                "guide_step3_title": "3. 동전 던지기",
+                "guide_step3_desc": "하단의 [동전 던지기] 버튼을 누르세요. 실제 물리 엔진이 적용된 듯한 3D 애니메이션과 함께 동전이 공중으로 튀어 오릅니다.",
+                "guide_step4_title": "4. 연승 기록 도전",
+                "guide_step4_desc": "예측에 연속으로 성공하여 나만의 최고 연승 기록(Streak)을 세워보세요! 결과는 이미지로 저장하거나 친구들에게 자랑할 수 있습니다."
+            }
+        };
+
+        function applyLanguage() {
+            const lang = localStorage.getItem('lang') || 'ko';
+            document.querySelectorAll('[data-key]').forEach(el => {
+                const key = el.dataset.key;
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+            if (translations[lang] && translations[lang].guide_doc_title) {
+                document.title = translations[lang].guide_doc_title;
+            }
+            document.documentElement.lang = lang;
+        }
+
+        document.addEventListener('DOMContentLoaded', applyLanguage);
+    </script>
+</body>
+</html>

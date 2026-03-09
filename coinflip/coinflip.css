@@ -19,7 +19,14 @@ body {
     transform: scale(1.05);
 }
 
-/* Coin Container */
+/* Skin Selector Buttons */
+.skin-btn.active {
+    border-color: var(--secondary);
+    background-color: rgba(3, 218, 198, 0.1);
+    box-shadow: 0 0 15px rgba(3, 218, 198, 0.3);
+}
+
+/* Coin Container (Handles the Jump) */
 .coin-container {
     perspective: 1000px;
     width: var(--coin-size);
@@ -27,12 +34,23 @@ body {
     z-index: 10;
 }
 
+@keyframes coin-jump {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-160px); }
+    100% { transform: translateY(0); }
+}
+
+.is-jumping {
+    animation: coin-jump 1.5s cubic-bezier(0.45, 0.05, 0.55, 0.95);
+}
+
+/* Coin (Handles the Rotation) */
 .coin {
     position: relative;
     width: 100%;
     height: 100%;
     transform-style: preserve-3d;
-    transition: transform 0.1s linear;
+    transition: transform 1.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .side {
@@ -45,6 +63,28 @@ body {
     background: linear-gradient(135deg, #FFD700 0%, #DAA520 50%, #8B6508 100%);
     box-shadow: inset 0 0 20px rgba(0,0,0,0.2), 0 0 15px rgba(255,215,0,0.3);
 }
+
+/* Specific Skins */
+.skin-bitcoin .side {
+    border-color: #E2761B;
+    background: linear-gradient(135deg, #F7931A 0%, #E2761B 100%);
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.3), 0 0 20px rgba(247,147,26,0.4);
+}
+.skin-bitcoin .coin-icon { color: white !important; }
+
+.skin-heart .side {
+    border-color: #D81B60;
+    background: linear-gradient(135deg, #FF4081 0%, #D81B60 100%);
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.2), 0 0 20px rgba(255,64,129,0.4);
+}
+.skin-heart .coin-icon { color: white !important; }
+
+.skin-cat .side {
+    border-color: #424242;
+    background: linear-gradient(135deg, #757575 0%, #424242 100%);
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.3), 0 0 20px rgba(117,117,117,0.4);
+}
+.skin-cat .coin-icon { color: #FFCCBC !important; }
 
 .front {
     z-index: 2;
@@ -65,16 +105,13 @@ body {
     transform: translateZ(-4px);
 }
 
-/* Flipping Animation */
-@keyframes coin-flip-animation {
-    0% { transform: translateY(0) rotateY(0) rotateX(0); }
-    30% { transform: translateY(-150px) rotateY(720deg) rotateX(180deg); }
-    70% { transform: translateY(-150px) rotateY(1440deg) rotateX(360deg); }
-    100% { transform: translateY(0); }
+@keyframes answer-pop {
+    0% { opacity: 0; transform: scale(0.8) translateY(20px); filter: blur(10px); }
+    100% { opacity: 1; transform: scale(1) translateY(0); filter: blur(0); }
 }
 
-.is-flipping {
-    animation: coin-flip-animation 1.5s cubic-bezier(0.45, 0.05, 0.55, 0.95) forwards;
+.answer-visible {
+    animation: answer-pop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
 /* Win Badge Animation */
