@@ -245,7 +245,7 @@ function addClickZones(padding, colWidth, width, height) {
 
 async function startClimb(playerIndex, isSequential = false) {
     if (isAnimating || completedPlayers.has(playerIndex)) return;
-    isAnimating = true;
+    if (!isSequential) isAnimating = true;
     SoundManager.init();
 
     const padding = 40;
@@ -268,15 +268,13 @@ async function startClimb(playerIndex, isSequential = false) {
         currentRow++;
         const endY = padding + currentRow * rowHeight;
 
-        // Draw Vertical segment
         ctx.beginPath();
         ctx.moveTo(startX, startY);
         ctx.lineTo(startX, endY);
         ctx.stroke();
-        SoundManager.playTick();
+        if (!isSequential || playerCount < 6) SoundManager.playTick();
         await sleep(isSequential ? 20 : 40);
 
-        // Check for Horizontal bridge
         if (currentCol > 0 && ladderData[currentCol - 1][currentRow]) {
             const endX = padding + (currentCol - 1) * colWidth;
             ctx.beginPath();
@@ -299,23 +297,26 @@ async function startClimb(playerIndex, isSequential = false) {
     const finalResult = results[currentCol];
     completedPlayers.add(playerIndex);
     
-    resultSection.classList.remove('hidden');
-    resultDisplay.textContent = `${players[playerIndex]} → ${finalResult}`;
-    resultDisplay.style.color = pathColor;
+    // Individual result display logic
+    if (!window.isAllDrawing) {
+        resultSection.classList.remove('hidden');
+        resultDisplay.innerHTML = `<span class="text-gray-500">${players[playerIndex]}</span> <span class="mx-2">→</span> <span>${finalResult}</span>`;
+        resultDisplay.style.color = pathColor;
+    }
     
     revealLadderResult(currentCol, finalResult, pathColor);
     
-    if (finalResult.includes('당첨') || finalResult.toLowerCase().includes('win')) {
+    if (!window.isAllDrawing && (finalResult.includes('당첨') || finalResult.toLowerCase().includes('win'))) {
         confetti({ particleCount: 100, spread: 70, origin: { y: 0.8 }, colors: [pathColor, '#FFFFFF'] });
     }
 
-    isAnimating = false;
+    if (!isSequential) isAnimating = false;
+    return { player: players[playerIndex], result: finalResult, color: pathColor };
 }
 
 async function startSequentialClimb() {
     if (isAnimating) return;
     
-    // Reset if everything was already completed
     if (completedPlayers.size >= playerCount) {
         drawLadder();
         completedPlayers.clear();
@@ -334,7 +335,7 @@ async function startSequentialClimb() {
     for (let i = 0; i < playerCount; i++) {
         if (!completedPlayers.has(i)) {
             await startClimb(i, true);
-            await sleep(500); // Small pause between players
+            await sleep(500); 
         }
     }
 
@@ -344,24 +345,69 @@ async function startSequentialClimb() {
     sequentialBtn.style.opacity = '1';
 }
 
-function revealLadderResult(colIndex, text, color = '#1F2937') {
-    const padding = 40;
-    const height = 400;
-    const colWidth = (320 - padding * 2) / (playerCount - 1);
-    const x = padding + colIndex * colWidth;
+async function revealAllResults() {
+    if (isAnimating) return;
     
-    ctx.font = 'bold 12px Roboto';
-    ctx.textAlign = 'center';
-    ctx.fillStyle = color;
-    // Clear area for result text
-    ctx.clearRect(x - 25, height - padding + 5, 50, 30);
-    ctx.fillText(text, x, height - padding + 20);
-}
-
-function revealAllResults() {
-    for (let i = 0; i < playerCount; i++) {
-        revealLadderResult(i, results[i]);
+    // Reset if needed
+    if (completedPlayers.size >= playerCount) {
+        drawLadder();
+        completedPlayers.clear();
     }
+
+    isAnimating = true;
+    window.isAllDrawing = true; // Global flag to suppress individual confetti/text
+    
+    const sequentialBtn = document.getElementById('sequential-btn');
+    const resetBtn = document.getElementById('reset-btn');
+    const allResultsBtn = document.getElementById('all-results-btn');
+    
+    allResultsBtn.disabled = true;
+    sequentialBtn.disabled = true;
+    allResultsBtn.style.opacity = '0.5';
+
+    // Run all remaining paths in parallel
+    const promises = [];
+    for (let i = 0; i < playerCount; i++) {
+        if (!completedPlayers.has(i)) {
+            promises.push(startClimb(i, true));
+        }
+    }
+
+    const allFinished = await Promise.all(promises);
+    
+    // Show total summary at the bottom
+    resultSection.classList.remove('hidden');
+    let summaryHtml = '<div class="grid grid-cols-2 gap-x-4 gap-y-2 text-left max-w-[280px] mx-auto mt-4">';
+    
+    // Get all results (including already completed ones)
+    // For simplicity, we just rebuild from the current state
+    for(let i=0; i < playerCount; i++) {
+        // Find which column this player ends up in (re-calculating is hard, so we'll store mapping)
+        // But for "All results", we just need to match player to their result
+        // We need to know which player ended in which result column.
+        // Let's modify startClimb to return mapping.
+    }
+    
+    // Display the finished list
+    summaryHtml = '<div class="space-y-2 text-sm font-bold">';
+    // We already have all results in the 'results' array but need to know which player got which
+    // The startClimb logic needs to return the result mapping.
+    
+    allFinished.forEach(res => {
+        summaryHtml += `<div style="color: ${res.color}">${res.player} : ${res.result}</div>`;
+    });
+    summaryHtml += '</div>';
+    
+    resultDisplay.innerHTML = summaryHtml;
+    resultDisplay.style.color = 'inherit';
+
+    confetti({ particleCount: 150, spread: 100, origin: { y: 0.7 } });
+
+    allResultsBtn.disabled = false;
+    sequentialBtn.disabled = false;
+    allResultsBtn.style.opacity = '1';
+    window.isAllDrawing = false;
+    isAnimating = false;
 }
 
 function sleep(ms) {
