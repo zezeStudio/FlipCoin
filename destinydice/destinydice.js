@@ -33,7 +33,9 @@ const translations = {
         "history_title": "Recent History",
         "clear_log": "Clear Log",
         "no_history": "No history yet.",
-        "confirm_clear_log": "Clear all history log?"
+        "confirm_clear_log": "Clear all history log?",
+        "error_empty_option": "Please fill in all options.",
+        "error_duplicate_option": "Duplicate options are not allowed."
     },
     "ko": {
         "app_title": "운명의 주사위 - Zeze Hub",
@@ -67,7 +69,9 @@ const translations = {
         "history_title": "최근 기록 (History)",
         "clear_log": "기록 비우기",
         "no_history": "아직 기록이 없습니다.",
-        "confirm_clear_log": "모든 결과 기록을 삭제할까요?"
+        "confirm_clear_log": "모든 결과 기록을 삭제할까요?",
+        "error_empty_option": "모든 선택지를 입력해주세요.",
+        "error_duplicate_option": "중복된 선택지가 있습니다."
     }
 };
 
@@ -191,7 +195,22 @@ function rollDice() {
     
     // Final sync of options before rolling
     const inputs = document.querySelectorAll('.option-item input');
-    options = Array.from(inputs).map(input => input.value.trim() || `${translations[currentLang].option_placeholder} ${parseInt(input.dataset.index) + 1}`);
+    const inputValues = Array.from(inputs).map(input => input.value.trim());
+
+    // Validation: Empty check
+    if (inputValues.some(val => val === "")) {
+        alert(translations[currentLang].error_empty_option);
+        return;
+    }
+
+    // Validation: Duplicate check
+    const uniqueOptions = new Set(inputValues);
+    if (uniqueOptions.size !== inputValues.length) {
+        alert(translations[currentLang].error_duplicate_option);
+        return;
+    }
+
+    options = inputValues;
     localStorage.setItem('dice_options', JSON.stringify(options));
     
     rollButton.disabled = true;
