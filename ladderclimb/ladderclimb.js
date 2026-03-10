@@ -19,9 +19,11 @@ const translations = {
         "guide_title": "User Guide",
         "privacy_policy": "Privacy Policy",
         "terms_of_service": "Terms of Service",
-        "player_placeholder": "Name",
+        "player_placeholder": "Ex) Player",
         "result_placeholder": "Reward/Penalty",
         "error_duplicate_bars": "Ladder generation error. Please try again.",
+        "error_empty_name": "Please enter all participant names.",
+        "error_duplicate_name": "Participant names cannot be duplicated.",
         "climbing_msg": "Climbing...",
         "click_to_start": "Click name to start!",
         "click_instruction": "Click on a participant's name to see their ladder path.",
@@ -45,9 +47,11 @@ const translations = {
         "guide_title": "사용 가이드",
         "privacy_policy": "개인정보처리방침",
         "terms_of_service": "서비스 약관",
-        "player_placeholder": "이름",
+        "player_placeholder": "예) 참가자",
         "result_placeholder": "당첨 내용",
         "error_duplicate_bars": "사다리 생성 중 오류가 발생했습니다. 다시 시도해주세요.",
+        "error_empty_name": "모든 참가자의 이름을 입력해주세요.",
+        "error_duplicate_name": "중복된 참가자 이름이 있습니다.",
         "climbing_msg": "내려가는 중...",
         "click_to_start": "이름을 클릭하면 시작됩니다!",
         "click_instruction": "참가자 이름을 클릭하면 해당 참가자의 사다리 결과를 확인할 수 있습니다.",
@@ -118,7 +122,7 @@ function renderInputs() {
         div.className = 'player-input-group flex gap-2';
         div.innerHTML = `
             <input type="text" class="player-name-input flex-1 p-3 rounded-xl border border-gray-200 focus:border-primary outline-none transition-all text-sm" 
-                placeholder="${translations[currentLang].player_placeholder} ${i + 1}" value="${currentLang === 'ko' ? '참가자' : 'Player'} ${i + 1}">
+                placeholder="${translations[currentLang].player_placeholder} ${i + 1}">
             <input type="text" class="result-input flex-1 p-3 rounded-xl border border-gray-200 focus:border-secondary outline-none transition-all text-sm" 
                 placeholder="${translations[currentLang].result_placeholder} ${i + 1}" value="${i === 0 ? (currentLang === 'ko' ? '당첨' : 'Winner') : (currentLang === 'ko' ? '꽝' : 'Fail')}">
         `;
@@ -131,7 +135,22 @@ function setupLadder() {
     const nameInputs = document.querySelectorAll('.player-name-input');
     const resInputs = document.querySelectorAll('.result-input');
     
-    players = Array.from(nameInputs).map(input => input.value || '???');
+    const nameValues = Array.from(nameInputs).map(input => input.value.trim());
+    
+    // Validation: Check if any name is empty
+    if (nameValues.some(name => name === '')) {
+        alert(translations[currentLang].error_empty_name);
+        return;
+    }
+
+    // Validation: Check for duplicates
+    const uniqueNames = new Set(nameValues);
+    if (uniqueNames.size !== nameValues.length) {
+        alert(translations[currentLang].error_duplicate_name);
+        return;
+    }
+
+    players = nameValues;
     results = Array.from(resInputs).map(input => input.value || '???');
     
     // Shuffle results
@@ -500,6 +519,7 @@ function setupEventListeners() {
     document.getElementById('player-minus').addEventListener('click', () => {
         if (playerCount > 2) {
             playerCount--;
+            if (winnerCount >= playerCount) winnerCount = playerCount - 1;
             renderInputs();
         }
     });
