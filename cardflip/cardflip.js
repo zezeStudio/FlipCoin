@@ -6,6 +6,9 @@ const translations = {
         "app_name": "Card Flip",
         "menu_sidebar_title": "Menu",
         "language_select_label": "Language",
+        "guide_title": "User Guide",
+        "privacy_policy": "Privacy Policy",
+        "terms_of_service": "Terms of Service",
         "main_title": "Lucky Card Flip",
         "main_description": "Pick a card and reveal your fate.",
         "setup_title": "Settings",
@@ -25,9 +28,10 @@ const translations = {
         "game_instruction": "Click a card to flip it!",
         "instruction_limit_1": "You can pick only <b>1</b> card for this mode.",
         "error_empty_custom": "Please fill in all card contents.",
-        "guide_title": "User Guide",
-        "privacy_policy": "Privacy Policy",
-        "terms_of_service": "Terms of Service",
+        "last_result_label": "Last Result",
+        "winner_text": "WINNER!",
+        "fail_text": "FAIL",
+        "fortune_disclaimer": "※ Please enjoy the results of this service for fun only.",
         "footer_copyright": "© 2024 Zeze Decision Hub."
     },
     "ko": {
@@ -35,6 +39,9 @@ const translations = {
         "app_name": "Card Flip",
         "menu_sidebar_title": "메뉴",
         "language_select_label": "언어",
+        "guide_title": "사용 가이드",
+        "privacy_policy": "개인정보처리방침",
+        "terms_of_service": "서비스 약관",
         "main_title": "행운의 카드 뒤집기",
         "main_description": "숨겨진 카드를 선택하고 결과를 확인하세요.",
         "setup_title": "설정",
@@ -54,9 +61,10 @@ const translations = {
         "game_instruction": "카드를 클릭하여 뒤집어보세요!",
         "instruction_limit_1": "이 모드에서는 <b>1장</b>의 카드만 고를 수 있습니다.",
         "error_empty_custom": "모든 카드 내용을 입력해주세요.",
-        "guide_title": "사용 가이드",
-        "privacy_policy": "개인정보처리방침",
-        "terms_of_service": "서비스 약관",
+        "last_result_label": "방금 확인한 카드",
+        "winner_text": "당첨!",
+        "fail_text": "꽝",
+        "fortune_disclaimer": "※ 본 서비스의 결과는 재미로만 즐겨주시기 바랍니다.",
         "footer_copyright": "© 2024 Zeze Decision Hub."
     }
 };
@@ -64,9 +72,9 @@ const translations = {
 let currentLang = localStorage.getItem('lang') || 'ko';
 let cardCount = 4;
 let currentMode = 'number';
-let cards = [];
-let flippedCount = 0;
+let cards = []; // Array of { content: string, dataIndex: number|null, isWinner: boolean, isRevealed: boolean, originalPoolIndex: number|null }
 let storytellingData = null;
+let lastFlippedCardIndex = null;
 
 // DOM Elements
 const setupSection = document.getElementById('setup-section');
@@ -104,12 +112,72 @@ function applyTranslations() {
         }
     });
     updateModeDescription();
+    updateInstructionText();
+    refreshVisibleResults();
+}
+
+function updateInstructionText() {
+    const instructionBar = document.getElementById('instruction-bar');
+    if (!instructionText || !instructionBar) return;
+
+    const isLimited = currentMode === 'icon' || currentMode === 'advice';
+    
+    if (isLimited) {
+        if (lastFlippedCardIndex !== null) {
+            // Already flipped one card in limited mode, hide instruction
+            instructionBar.classList.add('hidden');
+        } else {
+            instructionBar.classList.remove('hidden');
+            instructionText.innerHTML = translations[currentLang].instruction_limit_1;
+        }
+    } else {
+        instructionBar.classList.remove('hidden');
+        instructionText.textContent = translations[currentLang].game_instruction;
+    }
 }
 
 function updateModeDescription() {
     const key = `mode_desc_${currentMode}`;
     if (modeDescription && translations[currentLang][key]) {
         modeDescription.textContent = translations[currentLang][key];
+    }
+}
+
+function refreshVisibleResults() {
+    // 1. Update Card Backs
+    const cardItems = document.querySelectorAll('.card-item');
+    cardItems.forEach((item, idx) => {
+        const card = cards[idx];
+        if (!card) return;
+
+        const backText = item.querySelector('.card-back-text');
+        const backIcon = item.querySelector('.material-icons');
+        
+        if (currentMode === 'number') {
+            // No change for numbers
+        } else if (currentMode === 'custom') {
+            // User input stays same
+        } else {
+            // Icon/Advice: Get title and icon from pool
+            const dataKey = currentMode === 'icon' ? 'icon_fortune' : 'advice';
+            const itemData = storytellingData[dataKey][currentLang][card.originalPoolIndex];
+            if (itemData) {
+                if (backText) backText.textContent = itemData.title;
+                if (backIcon) backIcon.textContent = itemData.icon;
+            }
+        }
+    });
+
+    // 2. Update Story Result Section
+    if (lastFlippedCardIndex !== null && !storyResultSection.classList.contains('hidden')) {
+        const card = cards[lastFlippedCardIndex];
+        const dataKey = currentMode === 'icon' ? 'icon_fortune' : 'advice';
+        const itemData = storytellingData[dataKey][currentLang][card.originalPoolIndex];
+        if (itemData) {
+            document.getElementById('story-icon').textContent = itemData.icon;
+            document.getElementById('story-title').textContent = itemData.title;
+            document.getElementById('story-desc').textContent = itemData.desc;
+        }
     }
 }
 
@@ -134,7 +202,7 @@ function setupEventListeners() {
             updateModeDescription();
             customInputsArea.classList.toggle('hidden', currentMode !== 'custom');
             
-            const maxAvailable = currentMode === 'number' || currentMode === 'custom' ? 12 : 6;
+            const maxAvailable = (currentMode === 'icon' || currentMode === 'advice') ? 6 : 12;
             if (cardCount > maxAvailable) {
                 cardCount = maxAvailable;
                 cardCountDisplay.textContent = cardCount;
@@ -163,6 +231,7 @@ function setupEventListeners() {
         gameStage.classList.add('hidden');
         setupSection.classList.remove('hidden');
         storyResultSection.classList.add('hidden');
+        lastFlippedCardIndex = null;
     });
     document.getElementById('reveal-all-btn').addEventListener('click', revealAll);
 
@@ -191,7 +260,7 @@ function renderCustomInputs() {
 }
 
 function startGame() {
-    flippedCount = 0;
+    lastFlippedCardIndex = null;
     const isLimited = currentMode === 'icon' || currentMode === 'advice';
     
     if (currentMode === 'custom') {
@@ -201,19 +270,28 @@ function startGame() {
             alert(translations[currentLang].error_empty_custom);
             return;
         }
-        cards = vals.map(v => ({ content: v, isRevealed: false }));
+        cards = vals.map(v => ({ content: v, isRevealed: false, originalPoolIndex: null }));
     } else if (currentMode === 'number') {
-        cards = Array.from({ length: cardCount }, (_, i) => ({ content: (i + 1).toString(), isRevealed: false }));
+        cards = Array.from({ length: cardCount }, (_, i) => ({ content: (i + 1).toString(), isRevealed: false, originalPoolIndex: null }));
     } else {
         const dataKey = currentMode === 'icon' ? 'icon_fortune' : 'advice';
-        let pool = [...storytellingData[dataKey][currentLang]];
-        for (let i = pool.length - 1; i > 0; i--) {
+        // Use a generic range to pick items from the pool
+        let poolIndices = Array.from({ length: storytellingData[dataKey]['ko'].length }, (_, i) => i);
+        // Shuffle indices
+        for (let i = poolIndices.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
-            [pool[i], pool[j]] = [pool[j], pool[i]];
+            [poolIndices[i], poolIndices[j]] = [poolIndices[j], poolIndices[i]];
         }
-        cards = pool.slice(0, cardCount).map(item => ({ ...item, content: item.title, isRevealed: false }));
+        
+        cards = poolIndices.slice(0, cardCount).map(idx => ({
+            originalPoolIndex: idx,
+            isRevealed: false,
+            content: storytellingData[dataKey][currentLang][idx].title,
+            icon: storytellingData[dataKey][currentLang][idx].icon
+        }));
     }
 
+    // Shuffle card positions
     for (let i = cards.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [cards[i], cards[j]] = [cards[j], cards[i]];
@@ -224,11 +302,11 @@ function startGame() {
     gameStage.classList.remove('hidden');
     storyResultSection.classList.add('hidden');
     
+    updateInstructionText();
+    
     if (isLimited) {
-        instructionText.innerHTML = translations[currentLang].instruction_limit_1;
         document.getElementById('reveal-all-btn').classList.add('hidden');
     } else {
-        instructionText.textContent = translations[currentLang].game_instruction;
         document.getElementById('reveal-all-btn').classList.remove('hidden');
     }
 }
@@ -246,7 +324,7 @@ function renderCards() {
                 <div class="card-front"></div>
                 <div class="card-back flex flex-col items-center justify-center p-2">
                     ${card.icon ? `<span class="material-icons text-primary mb-1">${card.icon}</span>` : ''}
-                    <span class="text-[10px] font-black text-gray-800 leading-tight">${card.content}</span>
+                    <span class="card-back-text text-[10px] font-black text-gray-800 leading-tight">${card.content}</span>
                 </div>
             </div>
         `;
@@ -257,14 +335,17 @@ function renderCards() {
 
 function handleCardClick(index, element) {
     const isLimited = currentMode === 'icon' || currentMode === 'advice';
-    if (cards[index].isRevealed || (isLimited && flippedCount >= 1)) return;
+    if (cards[index].isRevealed || (isLimited && lastFlippedCardIndex !== null)) return;
 
     cards[index].isRevealed = true;
-    flippedCount++;
+    lastFlippedCardIndex = index;
     element.classList.add('flipped');
 
-    if (cards[index].desc) {
-        showStoryResult(cards[index]);
+    updateInstructionText();
+
+    if (cards[index].originalPoolIndex !== null) {
+        const dataKey = currentMode === 'icon' ? 'icon_fortune' : 'advice';
+        showStoryResult(storytellingData[dataKey][currentLang][cards[index].originalPoolIndex]);
     }
 
     if (currentMode === 'icon') {
