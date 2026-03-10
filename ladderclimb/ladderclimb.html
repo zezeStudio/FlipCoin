@@ -103,10 +103,20 @@
 
         <!-- Ladder Stage -->
         <section id="ladder-stage" class="hidden flex flex-col items-center">
+            <!-- New Information Section -->
+            <div class="w-full mb-4 space-y-2">
+                <div id="winner-announcement" class="hidden bg-secondary/10 border border-secondary/20 p-3 rounded-2xl text-center">
+                    <span class="text-sm font-bold text-secondary" id="winner-text"></span>
+                </div>
+                <div class="bg-primary/5 p-3 rounded-2xl text-center border border-primary/10">
+                    <p class="text-[11px] text-primary font-medium" data-key="click_instruction">참가자 이름을 클릭하면 해당 참가자의 사다리 결과를 확인할 수 있습니다.</p>
+                </div>
+            </div>
+
             <div class="w-full overflow-x-auto no-scrollbar pb-4 mb-6">
                 <div id="ladder-container" class="relative bg-white rounded-3xl shadow-inner border border-gray-100 py-10 px-4 min-h-[400px]">
                     <!-- Ladder lines and labels will be here -->
-                    <div id="ladder-canvas-container" class="relative w-full h-full">
+                    <div id="ladder-canvas-container" class="relative w-full h-full mx-auto">
                         <canvas id="ladder-canvas"></canvas>
                     </div>
                 </div>
