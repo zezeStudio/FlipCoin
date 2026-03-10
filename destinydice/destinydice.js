@@ -343,8 +343,7 @@ function setupEventListeners() {
 
     document.getElementById('save-img-btn').addEventListener('click', saveImage);
     
-    // Clear Options
-    document.getElementById('clear-history-btn').addEventListener('click', () => {
+    const clearOptionsLogic = () => {
         if (confirm(translations[currentLang].confirm_clear)) {
             options = ["Yes", "No"];
             localStorage.setItem('dice_options', JSON.stringify(options));
@@ -352,7 +351,10 @@ function setupEventListeners() {
             destinySection.classList.remove('result-visible');
             destinySection.style.opacity = '0';
         }
-    });
+    };
+
+    // Clear Options
+    document.getElementById('reset-options-btn').addEventListener('click', clearOptionsLogic);
 
     // Clear History Log
     document.getElementById('clear-history-log-btn').addEventListener('click', () => {

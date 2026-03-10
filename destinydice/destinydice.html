@@ -60,7 +60,6 @@
             <li><a href="destinydice-guide.html" class="block w-full text-left p-2 rounded-md hover:bg-white/10" data-key="guide_title">사용 가이드</a></li>
             <li><a href="../privacy.html" class="block w-full text-left p-2 rounded-md hover:bg-white/10" data-key="privacy_policy">개인정보처리방침</a></li>
             <li><a href="../terms.html" class="block w-full text-left p-2 rounded-md hover:bg-white/10" data-key="terms_of_service">서비스 약관</a></li>
-            <li><button id="clear-history-btn" class="block w-full text-left p-2 rounded-md hover:bg-red-500/10 text-red-400" data-key="clear_history_btn">기록 지우기</button></li>
             <li class="py-2"><hr class="border-white/10"></li>
             <li>
                 <span class="block text-[10px] text-gray-500 mb-2 uppercase tracking-widest" data-key="language_select_label">Language</span>
@@ -121,10 +120,16 @@
 
         <!-- Options Input Section -->
         <section class="bg-white/5 p-6 rounded-3xl border border-white/10 mb-8">
-            <h2 class="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-4 flex justify-between items-center">
-                <span data-key="options_label">주사위 면 설정 (최대 6개)</span>
-                <span id="options-count" class="text-secondary">2/6</span>
-            </h2>
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-[10px] font-bold text-gray-500 uppercase tracking-widest flex items-center gap-2">
+                    <span data-key="options_label">주사위 면 설정 (최대 6개)</span>
+                    <span id="options-count" class="text-secondary">2/6</span>
+                </h2>
+                <button id="reset-options-btn" class="text-[10px] font-bold text-secondary hover:text-white transition-colors flex items-center gap-1">
+                    <span class="material-icons text-xs">restart_alt</span>
+                    <span data-key="clear_history_btn">옵션 초기화</span>
+                </button>
+            </div>
             <div id="options-list" class="space-y-3 mb-4">
                 <div class="option-item flex gap-2">
                     <div class="w-8 h-10 flex items-center justify-center font-black text-gray-500">1</div>
