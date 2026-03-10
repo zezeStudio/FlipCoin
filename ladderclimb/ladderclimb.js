@@ -23,7 +23,9 @@ const translations = {
         "result_placeholder": "Reward/Penalty",
         "error_duplicate_bars": "Ladder generation error. Please try again.",
         "climbing_msg": "Climbing...",
-        "click_to_start": "Click name to start!"
+        "click_to_start": "Click name to start!",
+        "click_instruction": "Click on a participant's name to see their ladder path.",
+        "winner_msg": "Congratulations! <b>{name}</b> has won!"
     },
     "ko": {
         "app_title": "운명의 사다리 - Zeze Hub",
@@ -47,7 +49,9 @@ const translations = {
         "result_placeholder": "당첨 내용",
         "error_duplicate_bars": "사다리 생성 중 오류가 발생했습니다. 다시 시도해주세요.",
         "climbing_msg": "내려가는 중...",
-        "click_to_start": "이름을 클릭하면 시작됩니다!"
+        "click_to_start": "이름을 클릭하면 시작됩니다!",
+        "click_instruction": "참가자 이름을 클릭하면 해당 참가자의 사다리 결과를 확인할 수 있습니다.",
+        "winner_msg": "축하합니다! <b>{name}</b> 님이 당첨되었습니다!"
     }
 };
 
@@ -63,8 +67,7 @@ let playerResultMap = {}; // Keep track of player results
 // Path Colors
 const playerColors = [
     '#6200EE', '#03DAC6', '#FF0266', '#FF9800', 
-    '#4CAF50', '#2196F3', '#9C27B0', '#F44336', 
-    '#795548', '#607D8B'
+    '#4CAF50'
 ];
 
 // DOM Elements
@@ -76,6 +79,8 @@ const resultSection = document.getElementById('result-section');
 const resultDisplay = document.getElementById('result-display');
 const canvas = document.getElementById('ladder-canvas');
 const ctx = canvas.getContext('2d');
+const winnerAnnouncement = document.getElementById('winner-announcement');
+const winnerText = document.getElementById('winner-text');
 
 // Sound Manager
 const SoundManager = {
@@ -137,6 +142,7 @@ function setupLadder() {
 
     completedPlayers.clear();
     playerResultMap = {};
+    if (winnerAnnouncement) winnerAnnouncement.classList.add('hidden');
     generateLadderData();
     drawLadder();
     
@@ -162,17 +168,27 @@ function generateLadderData() {
     }
 }
 
-function drawLadder() {
-    const padding = 40;
+function getLadderDimensions() {
+    const padding = 50; // Increased padding for top results
     const width = 320;
-    const height = 400;
+    const height = 420; // Increased height
     const colWidth = (width - padding * 2) / (playerCount - 1);
     const rowHeight = (height - padding * 2) / (ladderData[0].length - 1);
+    return { padding, width, height, colWidth, rowHeight };
+}
+
+function drawLadder() {
+    const { padding, width, height, colWidth, rowHeight } = getLadderDimensions();
 
     canvas.width = width * 2;
     canvas.height = height * 2;
     canvas.style.width = `${width}px`;
     canvas.style.height = `${height}px`;
+    
+    // Reset container width to fixed
+    const canvasContainer = document.getElementById('ladder-canvas-container');
+    if (canvasContainer) canvasContainer.style.width = `${width}px`;
+    
     ctx.scale(2, 2);
 
     ctx.clearRect(0, 0, width, height);
@@ -192,9 +208,9 @@ function drawLadder() {
         ctx.lineTo(x, height - padding);
         ctx.stroke();
 
-        // Names and placeholders - Adjusted position to be closer to the line
+        // Names - Positioned at padding
         ctx.fillStyle = playerColors[i % playerColors.length];
-        ctx.fillText(players[i], x, padding - 15); 
+        ctx.fillText(players[i], x, padding - 20); 
         ctx.fillStyle = '#D1D5DB';
         ctx.fillText('???', x, height - padding + 20);
     }
@@ -219,10 +235,13 @@ function drawLadder() {
 }
 
 function addClickZones(padding, colWidth, width, height) {
-    const container = document.getElementById('ladder-container');
-    const existingZones = container.querySelectorAll('.click-zone');
+    const canvasContainer = document.getElementById('ladder-canvas-container');
+    if (!canvasContainer) return;
+    
+    const existingZones = canvasContainer.querySelectorAll('.click-zone');
     existingZones.forEach(z => z.remove());
 
+    const container = document.getElementById('ladder-container');
     const hint = container.querySelector('.click-hint') || document.createElement('div');
     hint.className = 'click-hint absolute top-2 left-0 right-0 text-center text-[10px] text-primary font-bold animate-pulse';
     hint.textContent = translations[currentLang].click_to_start;
@@ -231,17 +250,25 @@ function addClickZones(padding, colWidth, width, height) {
     for (let i = 0; i < playerCount; i++) {
         const x = padding + i * colWidth;
         const zone = document.createElement('div');
-        zone.className = 'click-zone absolute cursor-pointer hover:bg-primary/5 rounded-xl border border-transparent hover:border-primary/20 transition-all flex items-center justify-center group';
+        zone.className = 'click-zone absolute cursor-pointer hover:bg-primary/5 rounded-xl border border-transparent hover:border-primary/20 transition-all flex flex-col items-center group';
         zone.style.left = `${x - 25}px`;
-        zone.style.top = `${padding - 30}px`; // Better alignment with name
+        zone.style.top = `${padding - 35}px`; // Precisely covering the name
         zone.style.width = '50px';
         zone.style.height = '30px';
         
-        // Add a small indicator dot on hover
-        zone.innerHTML = '<div class="w-1 h-1 bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-opacity mt-4"></div>';
+        // Visual indicator to show selection
+        zone.innerHTML = `
+            <div class="w-full h-full absolute inset-0 rounded-lg group-hover:bg-primary/10 transition-colors"></div>
+            <div class="w-1.5 h-1.5 bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-opacity mt-8 shadow-sm"></div>
+        `;
         
-        zone.addEventListener('click', () => startClimb(i));
-        container.appendChild(zone);
+        zone.addEventListener('click', () => {
+            // Highlight selected
+            canvasContainer.querySelectorAll('.click-zone').forEach(z => z.classList.remove('selected-player'));
+            zone.classList.add('selected-player');
+            startClimb(i);
+        });
+        canvasContainer.appendChild(zone);
     }
 }
 
@@ -277,9 +304,7 @@ async function startClimb(playerIndex, isMulti = false) {
     if (!isMulti) isAnimating = true;
     SoundManager.init();
 
-    const padding = 40;
-    const colWidth = (320 - padding * 2) / (playerCount - 1);
-    const rowHeight = (400 - padding * 2) / (ladderData[0].length - 1);
+    const { padding, colWidth, rowHeight } = getLadderDimensions();
 
     let currentCol = playerIndex;
     let currentRow = 0;
@@ -333,7 +358,7 @@ async function startClimb(playerIndex, isMulti = false) {
     completedPlayers.add(playerIndex);
     playerResultMap[playerIndex] = finalResult;
     
-    revealLadderResult(currentCol, finalResult, pathColor);
+    revealLadderResult(playerIndex, currentCol, finalResult, pathColor);
     renderResultSummary();
     
     if (!window.isAllDrawing && (finalResult.includes('당첨') || finalResult.toLowerCase().includes('win'))) {
@@ -351,6 +376,7 @@ async function startSequentialClimb() {
         drawLadder();
         completedPlayers.clear();
         playerResultMap = {};
+        if (winnerAnnouncement) winnerAnnouncement.classList.add('hidden');
         resultSection.classList.add('hidden');
     }
 
@@ -383,6 +409,7 @@ async function revealAllResults() {
         drawLadder();
         completedPlayers.clear();
         playerResultMap = {};
+        if (winnerAnnouncement) winnerAnnouncement.classList.add('hidden');
     }
 
     isAnimating = true;
@@ -414,17 +441,32 @@ async function revealAllResults() {
     isAnimating = false;
 }
 
-function revealLadderResult(colIndex, text, color = '#1F2937') {
-    const padding = 40;
-    const height = 400;
-    const colWidth = (320 - padding * 2) / (playerCount - 1);
-    const x = padding + colIndex * colWidth;
+function revealLadderResult(startIndex, endIndex, text, color = '#1F2937') {
+    const { padding, height, colWidth } = getLadderDimensions();
     
+    // Bottom Result
+    const xEnd = padding + endIndex * colWidth;
     ctx.font = 'bold 12px Roboto';
     ctx.textAlign = 'center';
     ctx.fillStyle = color;
-    ctx.clearRect(x - 25, height - padding + 5, 50, 30);
-    ctx.fillText(text, x, height - padding + 20);
+    ctx.clearRect(xEnd - 25, height - padding + 5, 50, 30);
+    ctx.fillText(text, xEnd, height - padding + 20);
+
+    // Winner Announcement
+    const isWin = text.includes('당첨') || text.toLowerCase().includes('win');
+    if (isWin) {
+        // Top Label on Canvas
+        const xStart = padding + startIndex * colWidth;
+        ctx.font = 'black 10px Roboto';
+        ctx.fillStyle = '#FF9800'; 
+        ctx.fillText(text.toUpperCase(), xStart, padding - 35);
+
+        // UI Alert above ladder
+        if (winnerAnnouncement && winnerText) {
+            winnerAnnouncement.classList.remove('hidden');
+            winnerText.innerHTML = translations[currentLang].winner_msg.replace('{name}', players[startIndex]);
+        }
+    }
 }
 
 function sleep(ms) {
@@ -449,7 +491,7 @@ function setLanguage(lang) {
 
 function setupEventListeners() {
     document.getElementById('player-plus').addEventListener('click', () => {
-        if (playerCount < 10) {
+        if (playerCount < 5) {
             playerCount++;
             renderInputs();
         }
@@ -468,6 +510,7 @@ function setupEventListeners() {
         setupSection.classList.remove('hidden');
         ladderStage.classList.add('hidden');
         resultSection.classList.add('hidden');
+        if (winnerAnnouncement) winnerAnnouncement.classList.add('hidden');
     });
 
     document.getElementById('sequential-btn').addEventListener('click', startSequentialClimb);
