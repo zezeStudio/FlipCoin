@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-key="guide_title">사용 가이드 - 시한 폭탄 돌리기</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body class="bg-gray-950 text-gray-300 font-sans antialiased leading-relaxed">
+    <div class="max-w-md mx-auto bg-black min-h-screen shadow-2xl border-x border-white/5">
+        <!-- Header -->
+        <header class="p-6 border-b border-white/10 flex items-center justify-between bg-black/50 backdrop-blur-md sticky top-0 z-10">
+            <h1 class="text-xl font-bold text-white flex items-center gap-2">
+                <span class="material-icons text-red-500">description</span>
+                <span data-key="guide_header">사용 가이드</span>
+            </h1>
+            <a href="timebomb.html" class="text-gray-500 hover:text-white transition-colors">
+                <span class="material-icons">close</span>
+            </a>
+        </header>
+
+        <!-- Content -->
+        <main class="p-6 space-y-10">
+            <!-- Intro -->
+            <section class="animate-fadeIn">
+                <h2 class="text-lg font-bold mb-3 flex items-center gap-2 text-red-500">
+                    <span class="material-icons">timer</span>
+                    <span data-key="intro_title">시한 폭탄 돌리기란?</span>
+                </h2>
+                <p class="text-sm text-gray-400 leading-relaxed" data-key="intro_desc">
+                    언제 터질지 모르는 시한 폭탄의 와이어를 끊으며 살아남는 스릴 만점 복불복 게임입니다. 친구들과 참여자 명단을 등록하여 순서대로 폭탄 해체에 도전해보세요.
+                </p>
+            </section>
+
+            <!-- Steps -->
+            <section class="space-y-4">
+                <h2 class="text-lg font-bold flex items-center gap-2 text-white">
+                    <span class="material-icons text-blue-500">settings</span>
+                    <span data-key="steps_title">플레이 방법</span>
+                </h2>
+                
+                <div class="space-y-6">
+                    <div class="flex gap-4">
+                        <div class="flex-shrink-0 w-8 h-8 bg-red-500/20 text-red-500 rounded-full flex items-center justify-center font-bold text-sm">1</div>
+                        <div>
+                            <h3 class="font-bold text-white text-sm" data-key="step1_title">참여자 등록</h3>
+                            <p class="text-xs text-gray-500 mt-1" data-key="step1_desc">게임 시작 전 참여할 인원과 이름을 입력하세요. 최소 2명부터 최대 8명까지 함께할 수 있습니다.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="flex-shrink-0 w-8 h-8 bg-red-500/20 text-red-500 rounded-full flex items-center justify-center font-bold text-sm">2</div>
+                        <div>
+                            <h3 class="font-bold text-white text-sm" data-key="step2_title">와이어 해체</h3>
+                            <p class="text-xs text-gray-500 mt-1" data-key="step2_desc">화면에 표시된 8~12개의 와이어 중 하나를 신중하게 선택하여 자릅니다. 누구의 차례인지 화면 상단 안내를 확인하세요.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="flex-shrink-0 w-8 h-8 bg-red-500/20 text-red-500 rounded-full flex items-center justify-center font-bold text-sm">3</div>
+                        <div>
+                            <h3 class="font-bold text-white text-sm" data-key="step3_title">결과 확인</h3>
+                            <p class="text-xs text-gray-500 mt-1" data-key="step3_desc">안전한 와이어라면 다음 사람으로 턴이 넘어가고, 트랩 와이어를 자르면 폭탄이 터지며 게임이 종료됩니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Rules -->
+            <section class="bg-white/5 p-6 rounded-3xl border border-white/10 space-y-4">
+                <h2 class="text-sm font-bold text-white uppercase tracking-widest flex items-center gap-2">
+                    <span class="material-icons text-yellow-500 text-base">emoji_events</span>
+                    <span data-key="rules_title">승리 및 성공 조건</span>
+                </h2>
+                <ul class="text-xs text-gray-400 space-y-3 list-disc pl-4">
+                    <li data-key="rule_1"><strong>폭탄 해체 성공:</strong> 트랩 와이어 딱 1개만 남기고 모든 와이어를 안전하게 제거하면 기적적인 해체에 성공하게 됩니다.</li>
+                    <li data-key="rule_2"><strong>패배자 지목:</strong> 폭탄이 터지면 해당 차례인 플레이어의 이름이 명확하게 표시되어 벌칙자를 정하기 좋습니다.</li>
+                </ul>
+            </section>
+
+            <!-- Tips -->
+            <section class="space-y-4">
+                <h2 class="text-lg font-bold flex items-center gap-2 text-white">
+                    <span class="material-icons text-purple-500">lightbulb</span>
+                    <span data-key="tips_title">이용 팁</span>
+                </h2>
+                <div class="grid grid-cols-1 gap-3">
+                    <div class="p-4 bg-blue-500/10 border border-blue-500/20 rounded-2xl">
+                        <h4 class="text-xs font-bold text-blue-400 mb-1" data-key="tip1_title">실시간 언어 변경</h4>
+                        <p class="text-[11px] text-gray-500" data-key="tip1_desc">게임 도중 메뉴에서 한국어와 영어를 자유롭게 전환할 수 있습니다. 결과 메시지도 즉시 번역됩니다.</p>
+                    </div>
+                    <div class="p-4 bg-purple-500/10 border border-purple-500/20 rounded-2xl">
+                        <h4 class="text-xs font-bold text-purple-400 mb-1" data-key="tip2_title">진동 피드백</h4>
+                        <p class="text-[11px] text-gray-500" data-key="tip2_desc">모바일 기기에서 플레이 시 와이어를 자를 때와 폭발할 때 생생한 진동을 느낄 수 있습니다.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Disclaimer -->
+            <section class="bg-amber-900/20 p-5 rounded-2xl border border-amber-500/20">
+                <h2 class="text-sm font-bold text-amber-500 flex items-center gap-2 mb-2">
+                    <span class="material-icons text-base">warning</span>
+                    <span data-key="disclaimer_title">면책조항</span>
+                </h2>
+                <p class="text-[11px] text-amber-200/60 leading-relaxed" data-key="disclaimer_desc">
+                    본 서비스는 재미를 위한 도구일 뿐입니다. 게임의 결과로 인한 지나친 갈등은 피해주시기 바라며, 모든 결정의 최종 책임은 사용자에게 있습니다.
+                </p>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="p-8 text-center border-t border-white/5">
+            <p class="text-[10px] text-gray-600">© 2024 Zeze Decision Hub. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        const guideTranslations = {
+            "en": {
+                "guide_title": "User Guide - Time Bomb",
+                "guide_header": "User Guide",
+                "intro_title": "What is Time Bomb?",
+                "intro_desc": "It's a high-tension luck game where you survive by cutting wires of a ticking bomb. Register participants and take turns defusing the bomb.",
+                "steps_title": "How to Play",
+                "step1_title": "Register Players",
+                "step1_desc": "Enter the number of players and their names before starting. Supports 2 to 8 players.",
+                "step2_title": "Cut Wires",
+                "step2_desc": "Choose and cut one of the 8-12 wires. Check the turn indicator at the top to see whose turn it is.",
+                "step3_title": "Check Result",
+                "step3_desc": "If the wire is safe, the turn passes to the next person. If you cut the trap wire, the bomb explodes!",
+                "rules_title": "Victory Conditions",
+                "rule_1": "<strong>Success:</strong> Miraculously defuse the bomb by removing all wires except the final trap.",
+                "rule_2": "<strong>Failure:</strong> If it explodes, the name of the player who triggered it is clearly displayed.",
+                "tips_title": "Useful Tips",
+                "tip1_title": "Real-time Language",
+                "tip1_desc": "Switch between Korean and English anytime during the game. Results translate instantly.",
+                "tip2_title": "Haptic Feedback",
+                "tip2_desc": "Experience realistic vibrations on mobile when cutting wires or witnessing an explosion.",
+                "disclaimer_title": "Disclaimer",
+                "disclaimer_desc": "This service is for entertainment only. Please avoid excessive conflict over results; final responsibility lies with the user."
+            },
+            "ko": {
+                "guide_title": "사용 가이드 - 시한 폭탄 돌리기",
+                "guide_header": "사용 가이드",
+                "intro_title": "시한 폭탄 돌리기란?",
+                "intro_desc": "언제 터질지 모르는 시한 폭탄의 와이어를 끊으며 살아남는 스릴 만점 복불복 게임입니다. 친구들과 참여자 명단을 등록하여 순서대로 폭탄 해체에 도전해보세요.",
+                "steps_title": "플레이 방법",
+                "step1_title": "참여자 등록",
+                "step1_desc": "게임 시작 전 참여할 인원과 이름을 입력하세요. 최소 2명부터 최대 8명까지 함께할 수 있습니다.",
+                "step2_title": "와이어 해체",
+                "step2_desc": "화면에 표시된 8~12개의 와이어 중 하나를 신중하게 선택하여 자릅니다. 누구의 차례인지 화면 상단 안내를 확인하세요.",
+                "step3_title": "결과 확인",
+                "step3_desc": "안전한 와이어라면 다음 사람으로 턴이 넘어가고, 트랩 와이어를 자르면 폭탄이 터지며 게임이 종료됩니다.",
+                "rules_title": "승리 및 성공 조건",
+                "rule_1": "<strong>해체 성공:</strong> 트랩 와이어 딱 1개만 남기고 모든 와이어를 안전하게 제거하면 기적적인 해체에 성공하게 됩니다.",
+                "rule_2": "<strong>패배자 지목:</strong> 폭탄이 터지면 해당 차례인 플레이어의 이름이 명확하게 표시되어 벌칙자를 정하기 좋습니다.",
+                "tips_title": "이용 팁",
+                "tip1_title": "실시간 언어 변경",
+                "tip1_desc": "게임 도중 메뉴에서 한국어와 영어를 자유롭게 전환할 수 있습니다. 결과 메시지도 즉시 번역됩니다.",
+                "tip2_title": "진동 피드백",
+                "tip2_desc": "모바일 기기에서 플레이 시 와이어를 자를 때와 폭발할 때 생생한 진동을 느낄 수 있습니다.",
+                "disclaimer_title": "면책조항",
+                "disclaimer_desc": "본 서비스는 재미를 위한 도구일 뿐입니다. 게임의 결과로 인한 지나친 갈등은 피해주시기 바라며, 모든 결정의 최종 책임은 사용자에게 있습니다."
+            }
+        };
+
+        const currentLang = localStorage.getItem('lang') || 'ko';
+        document.querySelectorAll('[data-key]').forEach(el => {
+            const key = el.dataset.key;
+            if (guideTranslations[currentLang][key]) {
+                el.innerHTML = guideTranslations[currentLang][key];
+            }
+        });
+        document.documentElement.lang = currentLang;
+    </script>
+</body>
+</html>
