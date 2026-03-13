@@ -445,6 +445,10 @@
                 }
             });
             document.documentElement.lang = currentLang;
+
+            if (document.getElementById('fortune-display') && !document.getElementById('fortune-display').classList.contains('hidden')) {
+                showFortuneText();
+            }
         }
 
         function drawFortune() {
