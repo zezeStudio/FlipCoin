@@ -1,7 +1,6 @@
-const CACHE_NAME = 'zeze-hub-v3';
+const CACHE_NAME = 'zeze-hub-v4';
 const ASSETS = [
   '/',
-  '/index.html',
   '/style.css',
   '/main.js',
   '/manifest.json',

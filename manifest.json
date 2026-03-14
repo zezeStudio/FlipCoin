@@ -2,7 +2,7 @@
   "name": "Zeze Hub - 스마트 결정 도구",
   "short_name": "Zeze Hub",
   "description": "당신의 모든 선택을 돕는 스마트한 결정 도구 모음",
-  "start_url": "/index.html",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#F5F5F5",
   "theme_color": "#6200EE",
