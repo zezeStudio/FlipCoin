@@ -1,4 +1,4 @@
-const CACHE_NAME = 'zeze-hub-v5';
+const CACHE_NAME = 'zeze-hub-v6';
 const ASSETS = [
   '/',
   '/style.css',
