@@ -1,4 +1,4 @@
-const CACHE_NAME = 'zeze-hub-v1.2.0';
+const CACHE_NAME = 'zeze-hub-v1.3.0';
 const ASSETS = [
   '/',
   '/index.html',
@@ -10,7 +10,21 @@ const ASSETS = [
   '/about.html',
   '/privacy.html',
   '/terms.html',
-  '/hub-guide.html'
+  '/hub-guide.html',
+  '/magiclamp/magiclamp.html',
+  '/magiclamp/magiclamp-guide.html',
+  '/coinflip/coinflip.html',
+  '/coinflip/coinflip-guide.html',
+  '/destinydice/destinydice.html',
+  '/destinydice/destinydice-guide.html',
+  '/ladderclimb/ladderclimb.html',
+  '/drawinglots/drawinglots.html',
+  '/teammaker/teammaker.html',
+  '/teammaker/teammaker-guide.html',
+  '/cardflip/cardflip.html',
+  '/cardflip/cardflip-guide.html',
+  '/timebomb/timebomb.html',
+  '/timebomb/timebomb-guide.html'
 ];
 
 // Install Service Worker
