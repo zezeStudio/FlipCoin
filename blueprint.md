@@ -36,8 +36,12 @@ Zeze Hub is a comprehensive decision-making platform that provides various tools
 - Added missing article titles and descriptions for the main hub page in `main.js` so they switch correctly.
 - Robust implementation of `applyLanguage` across the blog files that handles both simple and array-based summary content.
 
-## Current Update: Service Worker v1.2.0
-- Updated `CACHE_NAME` to `zeze-hub-v1.2.0` to trigger cache refresh.
-- Added `about.html`, `privacy.html`, `terms.html`, and `hub-guide.html` to the `ASSETS` list for offline support.
-- Implemented **Stale-While-Revalidate** caching strategy. This allows the app to load instantly from the cache while simultaneously fetching the latest version from the network in the background, ensuring the app is always up-to-date without sacrificing speed.
-- Improved fetch event handling to skip non-GET requests and browser extensions.
+## Current Update: Step 2 - Guide and Info Pages
+- **Detailed Tool Guide (`hub-guide.html`)**: Added detailed real-life use cases for tools:
+    - Choosing lunch menu with Coin Flip (psychological trick).
+    - Fair betting rules with Ladder Climb.
+    - Team building know-how using Random Team Maker.
+    - Quick tips for Magic Lamp and Time Bomb.
+- **About Page (`about.html`)**: Detailed introduction to Zeze Hub's philosophy, technical transparency (Web Crypto API), and mission to reduce decision fatigue.
+- **Multilingual Support**: Both pages now include full Korean and English translations directly in the HTML file for fast loading and SEO.
+- **UI Enhancements**: Added language toggles (KO/EN) to the navigation bars of all guide and info pages.

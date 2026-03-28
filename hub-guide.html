@@ -16,27 +16,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdn.tailwindcss.com">
     <title data-key="guide_doc_title">사용 가이드 - Zeze Hub</title>
-    <meta name="description" content="Zeze Hub 사용 가이드 - 요술 램프, 동전 던지기, 사다리 타기 등 8가지 도구의 사용법을 알아보세요. Zeze Hub User Guide - Learn how to use 8 tools including Magic Lamp, Coin Flip, and Ladder Climb.">
+    <meta name="description" content="Zeze Hub 사용 가이드 - 요술 램프, 동전 던지기, 사다리 타기 등 8가지 도구의 사용법과 실생활 활용 팁을 알아보세요.">
     <link rel="canonical" href="https://flipcoin-5ag.pages.dev/hub-guide.html">
     <meta property="og:title" content="사용 가이드 - Zeze Hub">
-    <meta property="og:description" content="Zeze Hub의 8가지 스마트한 결정 도구 사용법을 확인하세요. Explore how to use 8 smart decision tools on Zeze Hub.">
+    <meta property="og:description" content="Zeze Hub의 8가지 스마트한 결정 도구 사용법과 꿀팁을 확인하세요.">
     <meta property="og:url" content="https://flipcoin-5ag.pages.dev/hub-guide.html">
     <meta property="og:image" content="https://flipcoin-5ag.pages.dev/images/coinflip-social.png">
     <meta property="og:type" content="website">
-    <script type="application/ld+json">
-{
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "User Guide - Zeze Hub",
-    "url": "https://flipcoin-5ag.pages.dev/hub-guide.html",
-    "description": "Zeze Hub의 다양한 결정 도구 활용 가이드입니다.",
-    "author": {
-        "@type": "Organization",
-        "name": "Zeze Studio",
-        "url": "https://flipcoin-5ag.pages.dev/"
-    }
-}
-    </script>
+    
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -55,239 +42,195 @@
             }
         }
     </script>
-
-    <style>
-        button { touch-action: manipulation; }
-    </style>
 </head>
 <body class="bg-background text-gray-900 font-sans antialiased min-h-screen flex flex-col">
     <!-- Navigation Bar -->
     <nav class="bg-white shadow-sm sticky top-0 z-50">
-        <div class="max-w-4xl mx-auto px-4 h-16 flex items-center space-x-2">
-            <a href="./" class="p-2 -ml-2 rounded-full hover:bg-gray-100 focus:outline-none flex items-center text-primary">
-                <span class="material-icons">arrow_back</span>
-            </a>
-            <span class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-primaryLight" data-key="guide_nav_title">사용 가이드</span>
+        <div class="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+                <a href="./" class="p-2 -ml-2 rounded-full hover:bg-gray-100 flex items-center text-primary">
+                    <span class="material-icons">arrow_back</span>
+                </a>
+                <span class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-primaryLight" data-key="guide_nav_title">사용 가이드</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <button class="lang-btn px-3 py-1 rounded-full text-xs font-bold transition-all border border-gray-200" id="lang-ko" onclick="setLanguage('ko')">KO</button>
+                <button class="lang-btn px-3 py-1 rounded-full text-xs font-bold transition-all border border-gray-200" id="lang-en" onclick="setLanguage('en')">EN</button>
+            </div>
         </div>
     </nav>
 
     <main class="max-w-4xl mx-auto py-12 px-6 w-full flex-grow">
-        <section class="bg-white p-8 rounded-3xl border border-gray-100 shadow-lg space-y-16">
+        <section class="bg-white p-8 md:p-12 rounded-3xl border border-gray-100 shadow-lg space-y-16">
             <div class="text-center">
-                <h2 class="text-3xl font-black text-gray-900 mb-4" data-key="guide_main_title">Zeze Hub 활용하기</h2>
-                <p class="text-gray-600" data-key="guide_main_desc">선택의 순간을 즐거움으로 바꿔주는 8가지 스마트한 도구들을 소개합니다.</p>
+                <h1 class="text-3xl md:text-4xl font-black text-gray-900 mb-4" data-key="guide_main_title">Zeze Hub 활용 가이드</h1>
+                <p class="text-gray-600 max-w-2xl mx-auto" data-key="guide_main_desc">선택의 고통을 즐거움으로! 8가지 도구를 실생활에서 200% 활용하는 방법을 소개합니다.</p>
             </div>
 
-            <!-- Smart Tools Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 pt-8">
-                
-                <!-- Magic Lamp -->
-                <div class="flex gap-6">
-                    <div class="w-12 h-12 rounded-xl bg-yellow-100 flex items-center justify-center shrink-0">
-                        <span class="material-icons text-2xl text-yellow-600">auto_fix_high</span>
+            <!-- Detailed Guide Section -->
+            <div class="space-y-20">
+                <!-- Case 1: Lunch Menu -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+                    <div class="order-2 md:order-1">
+                        <span class="inline-block px-3 py-1 rounded-full bg-orange-100 text-orange-600 text-xs font-bold mb-4" data-key="guide_case1_tag">점심 메뉴 추천</span>
+                        <h2 class="text-2xl font-bold mb-4" data-key="guide_case1_title">동전 던지기로 결정하는 '오늘의 메뉴'</h2>
+                        <p class="text-gray-600 leading-relaxed mb-6" data-key="guide_case1_desc">
+                            짜장면이냐 짬뽕이냐, 그것이 문제라면? 동전의 앞면은 'A 메뉴', 뒷면은 'B 메뉴'로 정하고 던지세요. 결과가 나왔을 때 '아, 다시 던지고 싶다'는 생각이 든다면, 당신의 마음은 이미 반대쪽 메뉴를 원하고 있는 것입니다!
+                        </p>
+                        <div class="flex items-center gap-4">
+                            <a href="./" class="text-primary font-bold flex items-center gap-1 hover:underline">
+                                <span class="material-icons text-sm">toll</span> <span data-key="guide_go_tool">도구 바로가기</span>
+                            </a>
+                        </div>
                     </div>
-                    <div>
-                        <h3 class="font-bold text-lg mb-2" data-key="guide_tool1_title">요술 램프 (Yes or No)</h3>
-                        <p class="text-xs text-gray-500 leading-relaxed" data-key="guide_tool1_desc">"할까 말까?" 고민될 때 램프를 문지르세요. 지니가 위트 있는 조언과 함께 명확한 답을 드립니다.</p>
-                    </div>
-                </div>
-
-                <!-- Coin Flip -->
-                <div class="flex gap-6">
-                    <div class="w-12 h-12 rounded-xl bg-teal-100 flex items-center justify-center shrink-0">
-                        <span class="material-icons text-2xl text-teal-600">toll</span>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-lg mb-2" data-key="guide_tool2_title">3D 동전 던지기</h3>
-                        <p class="text-xs text-gray-500 leading-relaxed" data-key="guide_tool2_desc">물리 엔진이 적용된 동전을 던져보세요. 예측 시스템을 통해 연속 성공 기록에 도전할 수 있습니다.</p>
+                    <div class="order-1 md:order-2 bg-orange-50 rounded-3xl p-8 flex items-center justify-center">
+                        <span class="material-icons text-[120px] text-orange-200">restaurant</span>
                     </div>
                 </div>
 
-                <!-- Dice -->
-                <div class="flex gap-6">
-                    <div class="w-12 h-12 rounded-xl bg-pink-100 flex items-center justify-center shrink-0">
-                        <span class="material-icons text-2xl text-pink-600">casino</span>
+                <!-- Case 2: Ladder Rules -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+                    <div class="bg-purple-50 rounded-3xl p-8 flex items-center justify-center">
+                        <span class="material-icons text-[120px] text-purple-200">format_align_justify</span>
                     </div>
                     <div>
-                        <h3 class="font-bold text-lg mb-2" data-key="guide_tool3_title">운명의 주사위</h3>
-                        <p class="text-xs text-gray-500 leading-relaxed" data-key="guide_tool3_desc">메뉴 고르기 등 여러 선택지가 필요할 때 유용합니다. 최대 6개까지 내용을 직접 입력해 주사위를 굴리세요.</p>
+                        <span class="inline-block px-3 py-1 rounded-full bg-purple-100 text-purple-600 text-xs font-bold mb-4" data-key="guide_case2_tag">내기 규칙</span>
+                        <h2 class="text-2xl font-bold mb-4" data-key="guide_case2_title">공정한 사다리타기 내기 규칙</h2>
+                        <p class="text-gray-600 leading-relaxed mb-6" data-key="guide_case2_desc">
+                            커피 내기부터 설거지 당번까지, 사다리타기는 가장 공평한 방법입니다. Zeze Hub의 사다리타기는 실시간 애니메이션으로 긴장감을 더합니다. 인원수를 설정하고 하단에 '당첨', '꽝' 또는 구체적인 금액을 적어보세요.
+                        </p>
+                        <div class="flex items-center gap-4">
+                            <a href="./" class="text-primary font-bold flex items-center gap-1 hover:underline">
+                                <span class="material-icons text-sm">format_align_justify</span> <span data-key="guide_go_tool">도구 바로가기</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Ladder -->
-                <div class="flex gap-6">
-                    <div class="w-12 h-12 rounded-xl bg-purple-100 flex items-center justify-center shrink-0">
-                        <span class="material-icons text-2xl text-primary">format_align_justify</span>
+                <!-- Case 3: Team Building -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+                    <div class="order-2 md:order-1">
+                        <span class="inline-block px-3 py-1 rounded-full bg-blue-100 text-blue-600 text-xs font-bold mb-4" data-key="guide_case3_tag">조 편성/팀 나누기</span>
+                        <h2 class="text-2xl font-bold mb-4" data-key="guide_case3_title">명단만 입력하면 끝! 팀 빌딩 노하우</h2>
+                        <p class="text-gray-600 leading-relaxed mb-6" data-key="guide_case3_desc">
+                            워크숍이나 조별 과제 시 팀을 나눌 때 '무작위 팀 나누기'를 사용하세요. 명단을 한 번에 복사해서 붙여넣고 원하는 팀 개수만 설정하면 1초 만에 공정한 팀 구성이 완료됩니다.
+                        </p>
+                        <div class="flex items-center gap-4">
+                            <a href="./" class="text-primary font-bold flex items-center gap-1 hover:underline">
+                                <span class="material-icons text-sm">groups</span> <span data-key="guide_go_tool">도구 바로가기</span>
+                            </a>
+                        </div>
                     </div>
-                    <div>
-                        <h3 class="font-bold text-lg mb-2" data-key="guide_tool4_title">운명의 사다리</h3>
-                        <p class="text-xs text-gray-500 leading-relaxed" data-key="guide_tool4_desc">친구들과 내기할 때 최고의 도구입니다. 인원수와 당첨 내용을 설정하고 긴장감 넘치는 결과를 확인하세요.</p>
-                    </div>
-                </div>
-
-                <!-- Drawing Lots -->
-                <div class="flex gap-6">
-                    <div class="w-12 h-12 rounded-xl bg-orange-100 flex items-center justify-center shrink-0">
-                        <span class="material-icons text-2xl text-orange-600">style</span>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-lg mb-2" data-key="guide_tool5_title">두근두근 제비뽑기</h3>
-                        <p class="text-xs text-gray-500 leading-relaxed" data-key="guide_tool5_desc">빠르고 간편하게 당첨자를 가려내야 할 때 사용하세요. 여러 개의 제비 중 행운의 주인공을 바로 뽑습니다.</p>
+                    <div class="order-1 md:order-2 bg-blue-50 rounded-3xl p-8 flex items-center justify-center">
+                        <span class="material-icons text-[120px] text-blue-200">groups</span>
                     </div>
                 </div>
-
-                <!-- Team Maker -->
-                <div class="flex gap-6">
-                    <div class="w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center shrink-0">
-                        <span class="material-icons text-2xl text-blue-600">groups</span>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-lg mb-2" data-key="guide_tool6_title">무작위 팀 나누기</h3>
-                        <p class="text-xs text-gray-500 leading-relaxed" data-key="guide_tool6_desc">명단을 입력하면 공정하게 팀을 짜드립니다. 팀 개수나 인원수에 맞춰 자동으로 조를 편성합니다.</p>
-                    </div>
-                </div>
-
-                <!-- Card Flip -->
-                <div class="flex gap-6">
-                    <div class="w-12 h-12 rounded-xl bg-pink-50 flex items-center justify-center shrink-0">
-                        <span class="material-icons text-2xl text-pink-500">style</span>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-lg mb-2" data-key="guide_tool7_title">행운의 카드 뒤집기</h3>
-                        <p class="text-xs text-gray-500 leading-relaxed" data-key="guide_tool7_desc">여러 장의 카드 중 하나를 선택하는 게임입니다. 순서 정하기나 오늘의 운세 확인용으로 좋습니다.</p>
-                    </div>
-                </div>
-
-                <!-- Time Bomb -->
-                <div class="flex gap-6">
-                    <div class="w-12 h-12 rounded-xl bg-red-100 flex items-center justify-center shrink-0">
-                        <span class="material-icons text-2xl text-red-600">timer</span>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-lg mb-2" data-key="guide_tool8_title">공포의 시한 폭탄</h3>
-                        <p class="text-xs text-gray-500 leading-relaxed" data-key="guide_tool8_desc">심장이 쫄깃한 와이어 끊기 게임입니다. 친구들과 돌아가며 와이어를 끊어 폭탄을 피해가세요.</p>
-                    </div>
-                </div>
-
             </div>
 
-            <!-- Smart Features Section -->
+            <!-- Quick Tips Grid -->
             <div class="border-t border-gray-100 pt-16">
-                <h3 class="text-2xl font-black text-center mb-10" data-key="guide_feat_title">더 똑똑한 사용 방법</h3>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="text-center space-y-3">
-                        <span class="material-icons text-4xl text-primary">install_mobile</span>
-                        <h4 class="font-bold" data-key="guide_feat1_title">앱으로 설치하기 (PWA)</h4>
-                        <p class="text-xs text-gray-500 leading-relaxed" data-key="guide_feat1_desc">브라우저 메뉴에서 '홈 화면에 추가'를 눌러보세요. 앱처럼 바탕화면에 두고 빠르게 실행할 수 있습니다.</p>
+                <h2 class="text-2xl font-black text-center mb-10" data-key="guide_tip_title">도구별 퀵 팁</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="p-6 bg-gray-50 rounded-2xl">
+                        <h4 class="font-bold flex items-center gap-2 mb-2">
+                            <span class="material-icons text-yellow-600">auto_fix_high</span>
+                            <span data-key="tip1_title">요술 램프</span>
+                        </h4>
+                        <p class="text-sm text-gray-600" data-key="tip1_desc">질문이 구체적일수록 지니가 더 명확하고 재미있는 답을 줍니다. 고민되는 카테고리를 먼저 선택하세요!</p>
                     </div>
-                    <div class="text-center space-y-3">
-                        <span class="material-icons text-4xl text-primary">volume_up</span>
-                        <h4 class="font-bold" data-key="guide_feat2_title">전역 사운드 제어</h4>
-                        <p class="text-xs text-gray-500 leading-relaxed" data-key="guide_feat2_desc">메인 페이지의 볼륨 버튼 하나로 모든 게임의 소리와 진동을 한 번에 켜거나 끌 수 있습니다.</p>
-                    </div>
-                    <div class="text-center space-y-3">
-                        <span class="material-icons text-4xl text-primary">history_edu</span>
-                        <h4 class="font-bold" data-key="guide_feat3_title">데이터 자동 저장</h4>
-                        <p class="text-xs text-gray-500 leading-relaxed" data-key="guide_feat3_desc">입력한 참여자 명단이나 설정값은 기기에 자동 저장됩니다. 앱을 껐다 켜도 입력한 내용이 그대로 유지됩니다.</p>
+                    <div class="p-6 bg-gray-50 rounded-2xl">
+                        <h4 class="font-bold flex items-center gap-2 mb-2">
+                            <span class="material-icons text-red-600">timer</span>
+                        </h4>
+                        <p class="text-sm text-gray-600" data-key="tip2_desc">긴장감을 높이려면 사운드를 켜세요. 마지막 와이어를 끊는 사람이 오늘의 벌칙 당첨자입니다!</p>
                     </div>
                 </div>
-            </div>
-
-            <!-- Security & Privacy -->
-            <div class="bg-gray-50 p-8 rounded-3xl border border-gray-100">
-                <h3 class="font-bold mb-3 flex items-center gap-2">
-                    <span class="material-icons text-primary">verified_user</span>
-                    <span data-key="guide_privacy_title">개인정보 및 보안 안내</span>
-                </h3>
-                <p class="text-sm text-gray-600 leading-relaxed" data-key="guide_privacy_desc">
-                    Zeze Hub는 사용자의 고민과 데이터를 존중합니다. 질문 내용, 이름, 결과 등 모든 정보는 별도의 서버로 전송되지 않으며 오직 사용자의 브라우저(localStorage)에만 안전하게 보관됩니다. 안심하고 즐기세요!
-                </p>
             </div>
         </section>
     </main>
 
-    <footer class="bg-white py-8 mt-auto border-t border-gray-200 text-center text-gray-500 text-xs">
-        <p>© 2026 ZezeStudio Decision Hub. All rights reserved.</p>
+    <footer class="bg-white py-12 border-t border-gray-200">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <p class="text-xs text-gray-400">© 2026 ZezeStudio Decision Hub. All rights reserved.</p>
+        </div>
     </footer>
 
     <script>
         const translations = {
-            "en": {
-                "guide_doc_title": "User Guide - Zeze Hub",
-                "guide_nav_title": "User Guide",
-                "guide_main_title": "Using Zeze Hub",
-                "guide_main_desc": "Introducing 8 smart tools that turn moments of decision into moments of joy.",
-                "guide_tool1_title": "Magic Lamp (Yes or No)",
-                "guide_tool1_desc": "Ask the genie when you're hesitant. Get clear answers with witty advice.",
-                "guide_tool2_title": "3D Coin Flip",
-                "guide_tool2_desc": "Flip coins with real physics. Challenge your win streak records.",
-                "guide_tool3_title": "Dice of Destiny",
-                "guide_tool3_desc": "Useful for choosing between many options like menus. Enter up to 6 items.",
-                "guide_tool4_title": "Ladder Climb",
-                "guide_tool4_desc": "The best tool for group betting. Set participants and outcomes for tense results.",
-                "guide_tool5_title": "Drawing Lots",
-                "guide_tool5_desc": "Pick winners quickly and easily. Choose the lucky one from several slips.",
-                "guide_tool6_title": "Random Team Maker",
-                "guide_tool6_desc": "Divide teams fairly by entering a list. Automatically groups by count or size.",
-                "guide_tool7_title": "Lucky Card Flip",
-                "guide_tool7_desc": "Select one from many cards. Great for deciding order or daily luck.",
-                "guide_tool8_title": "Time Bomb",
-                "guide_tool8_desc": "High-tension wire cutting game. Take turns avoiding the explosion.",
-                "guide_feat_title": "Smarter Ways to Use",
-                "guide_feat1_title": "Install as App (PWA)",
-                "guide_feat1_desc": "Use 'Add to Home Screen' in browser menu. Quick access like a native app.",
-                "guide_feat2_title": "Global Sound Control",
-                "guide_feat2_desc": "A single volume button on the main page controls sound and vibration for all tools.",
-                "guide_feat3_title": "Auto Save Data",
-                "guide_feat3_desc": "Your player lists and settings are saved locally. Everything stays even after restarting.",
-                "guide_privacy_title": "Security & Privacy",
-                "guide_privacy_desc": "Zeze Hub respects your data. Questions, names, and results are never sent to a server; they stay safely in your browser's local storage."
-            },
             "ko": {
                 "guide_doc_title": "사용 가이드 - Zeze Hub",
                 "guide_nav_title": "사용 가이드",
-                "guide_main_title": "Zeze Hub 활용하기",
-                "guide_main_desc": "선택의 순간을 즐거움으로 바꿔주는 8가지 스마트한 도구들을 소개합니다.",
-                "guide_tool1_title": "요술 램프 (Yes or No)",
-                "guide_tool1_desc": "\"할까 말까?\" 고민될 때 램프를 문지르세요. 지니가 위트 있는 조언과 함께 답을 드립니다.",
-                "guide_tool2_title": "3D 동전 던지기",
-                "guide_tool2_desc": "물리 엔진이 적용된 동전을 던져보세요. 예측 시스템을 통해 연속 성공 기록에 도전할 수 있습니다.",
-                "guide_tool3_title": "운명의 주사위",
-                "guide_tool3_desc": "메뉴 고르기 등 여러 선택지가 필요할 때 유용합니다. 최대 6개까지 내용을 입력해 굴리세요.",
-                "guide_tool4_title": "운명의 사다리",
-                "guide_tool4_desc": "친구들과 내기할 때 최고의 도구입니다. 인원수와 당첨 내용을 설정하고 결과를 확인하세요.",
-                "guide_tool5_title": "두근두근 제비뽑기",
-                "guide_tool5_desc": "빠르고 간편하게 당첨자를 가려내야 할 때 사용하세요. 여러 개의 제비 중 행운을 바로 뽑습니다.",
-                "guide_tool6_title": "무작위 팀 나누기",
-                "guide_tool6_desc": "명단을 입력하면 공정하게 팀을 짜드립니다. 팀 개수나 인원수에 맞춰 자동으로 편성합니다.",
-                "guide_tool7_title": "행운의 카드 뒤집기",
-                "guide_tool7_desc": "여러 장의 카드 중 하나를 선택하는 게임입니다. 순서 정하기나 운세 확인용으로 좋습니다.",
-                "guide_tool8_title": "공포의 시한 폭탄",
-                "guide_tool8_desc": "심장이 쫄깃한 와이어 끊기 게임입니다. 친구들과 돌아가며 폭탄을 피해가세요.",
-                "guide_feat_title": "더 똑똑한 사용 방법",
-                "guide_feat1_title": "앱으로 설치하기 (PWA)",
-                "guide_feat1_desc": "브라우저 메뉴에서 '홈 화면에 추가'를 눌러보세요. 바탕화면에서 빠르게 실행할 수 있습니다.",
-                "guide_feat2_title": "전역 사운드 제어",
-                "guide_feat2_desc": "메인 페이지의 볼륨 버튼 하나로 모든 게임의 소리와 진동을 한 번에 제어할 수 있습니다.",
-                "guide_feat3_title": "데이터 자동 저장",
-                "guide_feat3_desc": "참여자 명단이나 설정값은 기기에 자동 저장됩니다. 다시 접속해도 입력 내용이 유지됩니다.",
-                "guide_privacy_title": "개인정보 및 보안 안내",
-                "guide_privacy_desc": "Zeze Hub는 사용자의 데이터를 존중합니다. 모든 정보는 서버로 전송되지 않으며 오직 사용자의 브라우저에만 안전하게 보관됩니다."
+                "guide_main_title": "Zeze Hub 활용 가이드",
+                "guide_main_desc": "선택의 고통을 즐거움으로! 8가지 도구를 실생활에서 200% 활용하는 방법을 소개합니다.",
+                "guide_case1_tag": "점심 메뉴 추천",
+                "guide_case1_title": "동전 던지기로 결정하는 '오늘의 메뉴'",
+                "guide_case1_desc": "짜장면이냐 짬뽕이냐, 그것이 문제라면? 동전의 앞면은 'A 메뉴', 뒷면은 'B 메뉴'로 정하고 던지세요. 결과가 나왔을 때 '아, 다시 던지고 싶다'는 생각이 든다면, 당신의 마음은 이미 반대쪽 메뉴를 원하고 있는 것입니다!",
+                "guide_case2_tag": "내기 규칙",
+                "guide_case2_title": "공정한 사다리타기 내기 규칙",
+                "guide_case2_desc": "커피 내기부터 설거지 당번까지, 사다리타기는 가장 공평한 방법입니다. Zeze Hub의 사다리타기는 실시간 애니메이션으로 긴장감을 더합니다. 인원수를 설정하고 하단에 '당첨', '꽝' 또는 구체적인 금액을 적어보세요.",
+                "guide_case3_tag": "조 편성/팀 나누기",
+                "guide_case3_title": "명단만 입력하면 끝! 팀 빌딩 노하우",
+                "guide_case3_desc": "워크숍이나 조별 과제 시 팀을 나눌 때 '무작위 팀 나누기'를 사용하세요. 명단을 한 번에 복사해서 붙여넣고 원하는 팀 개수만 설정하면 1초 만에 공정한 팀 구성이 완료됩니다.",
+                "guide_tip_title": "도구별 퀵 팁",
+                "tip1_title": "요술 램프",
+                "tip1_desc": "질문이 구체적일수록 지니가 더 명확하고 재미있는 답을 줍니다. 고민되는 카테고리를 먼저 선택하세요!",
+                "tip2_title": "시한 폭탄",
+                "tip2_desc": "긴장감을 높이려면 사운드를 켜세요. 마지막 와이어를 끊는 사람이 오늘의 벌칙 당첨자입니다!",
+                "guide_go_tool": "도구 바로가기"
+            },
+            "en": {
+                "guide_doc_title": "User Guide - Zeze Hub",
+                "guide_nav_title": "User Guide",
+                "guide_main_title": "Zeze Hub How-to Guide",
+                "guide_main_desc": "Turn the pain of choice into joy! Here are ways to utilize our 8 tools in real life.",
+                "guide_case1_tag": "Lunch Menu Picker",
+                "guide_case1_title": "Deciding 'Today's Menu' with a Coin Flip",
+                "guide_case1_desc": "Jajangmyeon or Jjamppong? Assign 'Menu A' to heads and 'Menu B' to tails. If you feel like 'I want to flip again' after the result, your heart already knows it wants the other choice!",
+                "guide_case2_tag": "Betting Rules",
+                "guide_case2_title": "Fair Betting with Ladder Climb",
+                "guide_case2_desc": "From coffee bets to cleaning duties, ladder climb is the fairest way. Zeze Hub's ladder climb adds tension with real-time animation. Set the number of people and enter 'Win', 'Lose', or specific amounts.",
+                "guide_case3_tag": "Team Building",
+                "guide_case3_title": "Done in a Snap! Team Building Know-how",
+                "guide_case3_desc": "Use 'Random Team Maker' for workshops or group projects. Just copy-paste the list and set the team count. Fair team composition is done in a second.",
+                "guide_tip_title": "Quick Tips per Tool",
+                "tip1_title": "Magic Lamp",
+                "tip1_desc": "The more specific the question, the clearer and wittier the answer. Select a category first!",
+                "tip2_title": "Time Bomb",
+                "tip2_desc": "Turn on the sound for maximum tension! The person who cuts the last wire gets the penalty!",
+                "guide_go_tool": "Go to Tool"
             }
         };
 
+        let currentLang = localStorage.getItem('lang') || 'ko';
+
         function applyLanguage() {
-            const lang = localStorage.getItem('lang') || 'ko';
             document.querySelectorAll('[data-key]').forEach(el => {
                 const key = el.dataset.key;
-                if (translations[lang] && translations[lang][key]) {
-                    el.innerHTML = translations[lang][key];
+                if (translations[currentLang] && translations[currentLang][key]) {
+                    el.innerHTML = translations[currentLang][key];
                 }
             });
-            if (translations[lang] && translations[lang].guide_doc_title) {
-                document.title = translations[lang].guide_doc_title;
+            if (translations[currentLang] && translations[currentLang].guide_doc_title) {
+                document.title = translations[currentLang].guide_doc_title;
             }
-            document.documentElement.lang = lang;
+            document.documentElement.lang = currentLang;
+
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                const btnLang = btn.id.split('-')[1];
+                if (btnLang === currentLang) {
+                    btn.classList.add('bg-primary', 'text-white', 'border-primary');
+                    btn.classList.remove('bg-transparent', 'text-gray-600', 'border-gray-200');
+                } else {
+                    btn.classList.remove('bg-primary', 'text-white', 'border-primary');
+                    btn.classList.add('bg-transparent', 'text-gray-600', 'border-gray-200');
+                }
+            });
+        }
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('lang', lang);
+            applyLanguage();
         }
 
         document.addEventListener('DOMContentLoaded', applyLanguage);
