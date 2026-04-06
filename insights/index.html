@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G9VX66JXSD"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-G9VX66JXSD');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <title data-key="meta_title">의사결정 인사이트 블로그 - Zeze Hub Insight</title>
+    <meta name="description" content="선택의 고통을 줄이고 지혜로운 결정을 내리는 법. 심리학, 확률론, 게임 이론을 통해 배우는 의사결정의 모든 것. Decision Insights Blog by Zeze Hub.">
+    <link rel="canonical" href="https://flipcoin-5ag.pages.dev/insights/">
+    
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../style.css">
+    <script>
+        tailwind.config = {
+            theme: { extend: { colors: { primary: '#6200EE', primaryLight: '#BB86FC', surface: '#FFFFFF', background: '#F5F5F5' } } }
+        }
+    </script>
+</head>
+<body class="bg-background text-gray-900 font-sans antialiased min-h-screen flex flex-col">
+    <nav class="bg-surface shadow-sm sticky top-0 z-50">
+        <div class="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+                <a href="../" class="p-2 -ml-2 rounded-full hover:bg-gray-100 flex items-center text-primary"><span class="material-icons">arrow_back</span></a>
+                <span class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-primaryLight">Insight Blog</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <button class="lang-btn px-3 py-1 rounded-full text-xs font-bold transition-all border border-gray-200" id="lang-ko" onclick="setLanguage('ko')">KO</button>
+                <button class="lang-btn px-3 py-1 rounded-full text-xs font-bold transition-all border border-gray-200" id="lang-en" onclick="setLanguage('en')">EN</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow max-w-4xl mx-auto w-full px-6 py-12">
+        <header class="text-center mb-16">
+            <h1 class="text-3xl md:text-5xl font-black mb-6" data-key="main_title">더 나은 결정을 위한 인사이트</h1>
+            <p class="text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto" data-key="main_desc">
+                단순한 랜덤 도구를 넘어, 당신의 선택이 더 즐겁고 가치 있도록 돕는 심리학적 가이드를 만나보세요.
+            </p>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="article-list">
+            <!-- Articles will be listed here -->
+             <!-- Row 1 -->
+            <article class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                <h2 class="text-xl font-bold mb-3"><a href="decision-fatigue.html" class="hover:text-primary" data-key="art1_title">선택 장애를 극복하는 법</a></h2>
+                <p class="text-sm text-gray-600 mb-4" data-key="art1_desc">하루 수만 번의 선택으로 지친 당신의 뇌를 위한 가이드.</p>
+                <a href="decision-fatigue.html" class="text-primary font-bold text-sm inline-flex items-center gap-1"><span data-key="read_more">자세히 보기</span> <span class="material-icons text-[16px]">arrow_forward</span></a>
+            </article>
+            <article class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                <h2 class="text-xl font-bold mb-3"><a href="psychology-of-luck.html" class="hover:text-primary" data-key="art2_title">운과 확률의 심리학</a></h2>
+                <p class="text-sm text-gray-600 mb-4" data-key="art2_desc">우리가 왜 '운'에 의존하는지, 그 속에 숨겨진 심리적 기제를 파헤칩니다.</p>
+                <a href="psychology-of-luck.html" class="text-primary font-bold text-sm inline-flex items-center gap-1"><span data-key="read_more">자세히 보기</span> <span class="material-icons text-[16px]">arrow_forward</span></a>
+            </article>
+            <!-- Row 2 -->
+            <article class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                <h2 class="text-xl font-bold mb-3"><a href="crypto-randomness.html" class="hover:text-primary" data-key="art3_title">암호학적 무작위성이란?</a></h2>
+                <p class="text-sm text-gray-600 mb-4" data-key="art3_desc">Web Crypto API로 보장하는 완벽한 공정성과 데이터의 진실.</p>
+                <a href="crypto-randomness.html" class="text-primary font-bold text-sm inline-flex items-center gap-1"><span data-key="read_more">자세히 보기</span> <span class="material-icons text-[16px]">arrow_forward</span></a>
+            </article>
+            <article class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                <h2 class="text-xl font-bold mb-3"><a href="mbti-decisions.html" class="hover:text-primary" data-key="art4_title">MBTI별 결정 스타일</a></h2>
+                <p class="text-sm text-gray-600 mb-4" data-key="art4_desc">성격 유형에 따라 달라지는 16가지 선택의 메커니즘.</p>
+                <a href="mbti-decisions.html" class="text-primary font-bold text-sm inline-flex items-center gap-1"><span data-key="read_more">자세히 보기</span> <span class="material-icons text-[16px]">arrow_forward</span></a>
+            </article>
+            <!-- Row 3 -->
+            <article class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                <h2 class="text-xl font-bold mb-3"><a href="lunch-menu-tips.html" class="hover:text-primary" data-key="art5_title">오늘 점심 뭐 먹지?</a></h2>
+                <p class="text-sm text-gray-600 mb-4" data-key="art5_desc">결정 피로를 줄이고 행복한 식사를 만드는 5가지 팁.</p>
+                <a href="lunch-menu-tips.html" class="text-primary font-bold text-sm inline-flex items-center gap-1"><span data-key="read_more">자세히 보기</span> <span class="material-icons text-[16px]">arrow_forward</span></a>
+            </article>
+            <article class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                <h2 class="text-xl font-bold mb-3"><a href="fairness-science.html" class="hover:text-primary" data-key="art6_title">공정한 팀 구성의 과학</a></h2>
+                <p class="text-sm text-gray-600 mb-4" data-key="art6_desc">갈등 없는 모임을 위해 무작위 추첨이 필요한 과학적 근거.</p>
+                <a href="fairness-science.html" class="text-primary font-bold text-sm inline-flex items-center gap-1"><span data-key="read_more">자세히 보기</span> <span class="material-icons text-[16px]">arrow_forward</span></a>
+            </article>
+            <!-- Row 4 -->
+            <article class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                <h2 class="text-xl font-bold mb-3"><a href="paradox-of-choice.html" class="hover:text-primary" data-key="art7_title">선택의 역설</a></h2>
+                <p class="text-sm text-gray-600 mb-4" data-key="art7_desc">선택지가 많을수록 우리는 왜 더 불행해지는가?</p>
+                <a href="paradox-of-choice.html" class="text-primary font-bold text-sm inline-flex items-center gap-1"><span data-key="read_more">자세히 보기</span> <span class="material-icons text-[16px]">arrow_forward</span></a>
+            </article>
+            <article class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                <h2 class="text-xl font-bold mb-3"><a href="cognitive-biases-in-choices.html" class="hover:text-primary" data-key="art8_title">우리를 속이는 인지 편향</a></h2>
+                <p class="text-sm text-gray-600 mb-4" data-key="art8_desc">합리적이라고 믿었던 당신의 선택 속에 숨은 뇌의 함정.</p>
+                <a href="cognitive-biases-in-choices.html" class="text-primary font-bold text-sm inline-flex items-center gap-1"><span data-key="read_more">자세히 보기</span> <span class="material-icons text-[16px]">arrow_forward</span></a>
+            </article>
+            <!-- Row 5 -->
+            <article class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                <h2 class="text-xl font-bold mb-3"><a href="history-of-divination.html" class="hover:text-primary" data-key="art9_title">점술과 결정의 역사</a></h2>
+                <p class="text-sm text-gray-600 mb-4" data-key="art9_desc">고대 주술부터 현대의 랜덤 알고리즘까지, 선택의 도구들.</p>
+                <a href="history-of-divination.html" class="text-primary font-bold text-sm inline-flex items-center gap-1"><span data-key="read_more">자세히 보기</span> <span class="material-icons text-[16px]">arrow_forward</span></a>
+            </article>
+            <article class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                <h2 class="text-xl font-bold mb-3"><a href="ai-decision-making.html" class="hover:text-primary" data-key="art10_title">AI와 의사결정의 미래</a></h2>
+                <p class="text-sm text-gray-600 mb-4" data-key="art10_desc">인공지능은 우리의 선택을 대신해줄 수 있을까요?</p>
+                <a href="ai-decision-making.html" class="text-primary font-bold text-sm inline-flex items-center gap-1"><span data-key="read_more">자세히 보기</span> <span class="material-icons text-[16px]">arrow_forward</span></a>
+            </article>
+            <!-- Row 6 -->
+            <article class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                <h2 class="text-xl font-bold mb-3"><a href="mindfulness-and-decisions.html" class="hover:text-primary" data-key="art11_title">마음챙김과 선택</a></h2>
+                <p class="text-sm text-gray-600 mb-4" data-key="art11_desc">현재에 집중할 때 비로소 보이는 최선의 길.</p>
+                <a href="mindfulness-and-decisions.html" class="text-primary font-bold text-sm inline-flex items-center gap-1"><span data-key="read_more">자세히 보기</span> <span class="material-icons text-[16px]">arrow_forward</span></a>
+            </article>
+            <article class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                <h2 class="text-xl font-bold mb-3"><a href="gamification-of-daily-life.html" class="hover:text-primary" data-key="art12_title">일상의 게임화</a></h2>
+                <p class="text-sm text-gray-600 mb-4" data-key="art12_desc">지루한 선택의 과정을 재미있는 게임으로 바꾸는 기술.</p>
+                <a href="gamification-of-daily-life.html" class="text-primary font-bold text-sm inline-flex items-center gap-1"><span data-key="read_more">자세히 보기</span> <span class="material-icons text-[16px]">arrow_forward</span></a>
+            </article>
+            <!-- Row 7 -->
+            <article class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                <h2 class="text-xl font-bold mb-3"><a href="regret-management.html" class="hover:text-primary" data-key="art13_title">후회 없는 선택을 위한 심리학</a></h2>
+                <p class="text-sm text-gray-600 mb-4" data-key="art13_desc">이미 내린 결정을 자책하지 않고 앞으로 나아가는 법.</p>
+                <a href="regret-management.html" class="text-primary font-bold text-sm inline-flex items-center gap-1"><span data-key="read_more">자세히 보기</span> <span class="material-icons text-[16px]">arrow_forward</span></a>
+            </article>
+            <article class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                <h2 class="text-xl font-bold mb-3"><a href="heuristics-and-biases.html" class="hover:text-primary" data-key="art14_title">휴리스틱: 뇌의 지름길</a></h2>
+                <p class="text-sm text-gray-600 mb-4" data-key="art14_desc">복잡한 상황에서 빠르게 판단을 내리는 뇌의 전략.</p>
+                <a href="heuristics-and-biases.html" class="text-primary font-bold text-sm inline-flex items-center gap-1"><span data-key="read_more">자세히 보기</span> <span class="material-icons text-[16px]">arrow_forward</span></a>
+            </article>
+            <!-- Row 8 -->
+            <article class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                <h2 class="text-xl font-bold mb-3"><a href="group-decision-strategies.html" class="hover:text-primary" data-key="art15_title">집단 의사결정의 기술</a></h2>
+                <p class="text-sm text-gray-600 mb-4" data-key="art15_desc">여러 명의 의견을 하나로 모으는 가장 효율적인 방법들.</p>
+                <a href="group-decision-strategies.html" class="text-primary font-bold text-sm inline-flex items-center gap-1"><span data-key="read_more">자세히 보기</span> <span class="material-icons text-[16px]">arrow_forward</span></a>
+            </article>
+            <article class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                <h2 class="text-xl font-bold mb-3"><a href="luck-vs-probability.html" class="hover:text-primary" data-key="art16_title">운 vs 확률: 무엇이 다를까?</a></h2>
+                <p class="text-sm text-gray-600 mb-4" data-key="art16_desc">미신적인 운과 수학적인 확률 사이의 균형 잡기.</p>
+                <a href="luck-vs-probability.html" class="text-primary font-bold text-sm inline-flex items-center gap-1"><span data-key="read_more">자세히 보기</span> <span class="material-icons text-[16px]">arrow_forward</span></a>
+            </article>
+            <!-- Row 9 -->
+            <article class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                <h2 class="text-xl font-bold mb-3"><a href="history-of-games-of-chance.html" class="hover:text-primary" data-key="art17_title">확률 게임의 역사</a></h2>
+                <p class="text-sm text-gray-600 mb-4" data-key="art17_desc">주사위와 카드가 바꾼 인류의 문화와 수학적 발전.</p>
+                <a href="history-of-games-of-chance.html" class="text-primary font-bold text-sm inline-flex items-center gap-1"><span data-key="read_more">자세히 보기</span> <span class="material-icons text-[16px]">arrow_forward</span></a>
+            </article>
+            <article class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                <h2 class="text-xl font-bold mb-3"><a href="daily-fortune-philosophy.html" class="hover:text-primary" data-key="art18_title">오늘의 운세가 주는 위안</a></h2>
+                <p class="text-sm text-gray-600 mb-4" data-key="art18_desc">단순한 재미를 넘어, 오늘의 한마디가 우리 삶에 미치는 긍정적 영향.</p>
+                <a href="daily-fortune-philosophy.html" class="text-primary font-bold text-sm inline-flex items-center gap-1"><span data-key="read_more">자세히 보기</span> <span class="material-icons text-[16px]">arrow_forward</span></a>
+            </article>
+        </div>
+    </main>
+
+    <footer class="bg-surface py-12 mt-auto border-t border-gray-200 text-center text-gray-500 text-xs">
+        <p>© 2026 ZezeStudio Decision Hub. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const translations = {
+            "ko": {
+                "meta_title": "의사결정 인사이트 블로그 - Zeze Hub Insight",
+                "main_title": "더 나은 결정을 위한 인사이트",
+                "main_desc": "단순한 랜덤 도구를 넘어, 당신의 선택이 더 즐겁고 가치 있도록 돕는 심리학적 가이드를 만나보세요.",
+                "read_more": "자세히 보기",
+                "art1_title": "선택 장애를 극복하는 법", "art1_desc": "하루 수만 번의 선택으로 지친 당신의 뇌를 위한 가이드.",
+                "art2_title": "운과 확률의 심리학", "art2_desc": "우리가 왜 '운'에 의존하는지, 그 속에 숨겨진 심리적 기제를 파헤칩니다.",
+                "art3_title": "암호학적 무작위성이란?", "art3_desc": "Web Crypto API로 보장하는 완벽한 공정성과 데이터의 진실.",
+                "art4_title": "MBTI별 결정 스타일", "art4_desc": "성격 유형에 따라 달라지는 16가지 선택의 메커니즘.",
+                "art5_title": "오늘 점심 뭐 먹지?", "art5_desc": "결정 피로를 줄이고 행복한 식사를 만드는 5가지 팁.",
+                "art6_title": "공정한 팀 구성의 과학", "art6_desc": "갈등 없는 모임을 위해 무작위 추첨이 필요한 과학적 근거.",
+                "art7_title": "선택의 역설", "art7_desc": "선택지가 많을수록 우리는 왜 더 불행해지는가?",
+                "art8_title": "우리를 속이는 인지 편향", "art8_desc": "합리적이라고 믿었던 당신의 선택 속에 숨은 뇌의 함정.",
+                "art9_title": "점술과 결정의 역사", "art9_desc": "고대 주술부터 현대의 랜덤 알고리즘까지, 선택의 도구들.",
+                "art10_title": "AI와 의사결정의 미래", "art10_desc": "인공지능은 우리의 선택을 대신해줄 수 있을까요?",
+                "art11_title": "마음챙김과 선택", "art11_desc": "현재에 집중할 때 비로소 보이는 최선의 길.",
+                "art12_title": "일상의 게임화", "art12_desc": "지루한 선택의 과정을 재미있는 게임으로 바꾸는 기술.",
+                "art13_title": "후회 없는 선택을 위한 심리학", "art13_desc": "이미 내린 결정을 자책하지 않고 앞으로 나아가는 법.",
+                "art14_title": "휴리스틱: 뇌의 지름길", "art14_desc": "복잡한 상황에서 빠르게 판단을 내리는 뇌의 전략.",
+                "art15_title": "집단 의사결정의 기술", "art15_desc": "여러 명의 의견을 하나로 모으는 가장 효율적인 방법들.",
+                "art16_title": "운 vs 확률: 무엇이 다를까?", "art16_desc": "미신적인 운과 수학적인 확률 사이의 균형 잡기.",
+                "art17_title": "확률 게임의 역사", "art17_desc": "주사위와 카드가 바꾼 인류의 문화와 수학적 발전.",
+                "art18_title": "오늘의 운세가 주는 위안", "art18_desc": "단순한 재미를 넘어, 오늘의 한마디가 우리 삶에 미치는 긍정적 영향."
+            },
+            "en": {
+                "meta_title": "Decision Insight Blog - Zeze Hub",
+                "main_title": "Insights for Better Decisions",
+                "main_desc": "Beyond simple random tools, discover psychological guides to help make your choices more enjoyable and valuable.",
+                "read_more": "Read More",
+                "art1_title": "Overcoming Choice Paralysis", "art1_desc": "A guide for your brain, tired from tens of thousands of choices every day.",
+                "art2_title": "Psychology of Luck and Probability", "art2_desc": "Uncovering why we rely on 'luck' and the psychological mechanisms behind it.",
+                "art3_title": "What is Cryptographic Randomness?", "art3_desc": "Perfect fairness and data truth guaranteed by Web Crypto API.",
+                "art4_title": "Decision Styles by MBTI", "art4_desc": "16 different selection mechanisms depending on personality types.",
+                "art5_title": "What to Eat for Lunch?", "art5_desc": "5 tips to reduce decision fatigue and make meals happier.",
+                "art6_title": "Science of Fair Team Composition", "art6_desc": "Scientific reasons why random draws are needed for conflict-free gatherings.",
+                "art7_title": "The Paradox of Choice", "art7_desc": "Why do more choices often make us less happy?",
+                "art8_title": "Cognitive Biases That Deceive Us", "art8_desc": "Hidden brain traps in choices you believed were rational.",
+                "art9_title": "History of Divination and Decision", "art9_desc": "From ancient magic to modern random algorithms, tools of choice.",
+                "art10_title": "Future of AI and Decision Making", "art10_desc": "Can Artificial Intelligence ever make choices for us?",
+                "art11_title": "Mindfulness and Choice", "art11_desc": "The best path that only becomes visible when focused on the present.",
+                "art12_title": "Gamification of Daily Life", "art12_desc": "Techniques to turn boring decision processes into fun games.",
+                "art13_title": "Psychology for Regret-Free Choices", "art13_desc": "How to move forward without self-reproach over past decisions.",
+                "art14_title": "Heuristics: Brain's Shortcuts", "art14_desc": "The brain's strategy for making quick judgments in complex situations.",
+                "art15_title": "Techniques for Group Decisions", "art15_desc": "Most efficient ways to gather multiple opinions into one.",
+                "art16_title": "Luck vs. Probability: Differences?", "art16_desc": "Balancing superstitious luck with mathematical probability.",
+                "art17_title": "History of Games of Chance", "art17_desc": "How dice and cards changed human culture and math.",
+                "art18_title": "Comfort from Daily Fortunes", "art18_desc": "Beyond fun, the positive impact of a daily word of wisdom on our lives."
+            }
+        };
+
+        let currentLang = localStorage.getItem('lang') || 'ko';
+        function applyLanguage() {
+            document.querySelectorAll('[data-key]').forEach(el => {
+                const key = el.dataset.key;
+                if (translations[currentLang][key]) el.innerHTML = translations[currentLang][key];
+            });
+            document.documentElement.lang = currentLang;
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                const btnLang = btn.id.split('-')[1];
+                if (btnLang === currentLang) {
+                    btn.classList.add('bg-primary', 'text-white', 'border-primary');
+                    btn.classList.remove('bg-transparent', 'text-gray-600', 'border-gray-200');
+                } else {
+                    btn.classList.remove('bg-primary', 'text-white', 'border-primary');
+                    btn.classList.add('bg-transparent', 'text-gray-600', 'border-gray-200');
+                }
+            });
+        }
+        function setLanguage(lang) { currentLang = lang; localStorage.setItem('lang', lang); applyLanguage(); }
+        document.addEventListener('DOMContentLoaded', applyLanguage);
+    </script>
+</body>
+</html>

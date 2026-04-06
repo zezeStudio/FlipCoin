@@ -2,8 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Main Pages -->
   <url><loc>https://flipcoin-5ag.pages.dev/</loc><changefreq>weekly</changefreq>
-  <lastmod>2026-03-28</lastmod><priority>1.0</priority></url>
+  <lastmod>2026-04-06</lastmod><priority>1.0</priority></url>
   <url><loc>https://flipcoin-5ag.pages.dev/about.html</loc><priority>0.8</priority></url>
+  <url><loc>https://flipcoin-5ag.pages.dev/contact.html</loc><priority>0.8</priority></url>
   <url><loc>https://flipcoin-5ag.pages.dev/privacy.html</loc><priority>0.5</priority></url>
   <url><loc>https://flipcoin-5ag.pages.dev/terms.html</loc><priority>0.5</priority></url>
   <url><loc>https://flipcoin-5ag.pages.dev/hub-guide.html</loc><priority>0.8</priority></url>
@@ -27,6 +28,7 @@
   <url><loc>https://flipcoin-5ag.pages.dev/timebomb/timebomb-guide.html</loc><priority>0.6</priority></url>
 
   <!-- Insights Columns -->
+  <url><loc>https://flipcoin-5ag.pages.dev/insights/index.html</loc><priority>0.8</priority></url>
   <url><loc>https://flipcoin-5ag.pages.dev/insights/ai-decision-making.html</loc><priority>0.7</priority></url>
   <url><loc>https://flipcoin-5ag.pages.dev/insights/cognitive-biases-in-choices.html</loc><priority>0.7</priority></url>
   <url><loc>https://flipcoin-5ag.pages.dev/insights/crypto-randomness.html</loc><priority>0.7</priority></url>

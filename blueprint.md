@@ -14,7 +14,10 @@ Zeze Hub is a comprehensive decision-making platform that provides various tools
 
 ## Current Update: AdSense Compliance & Content Reinforcement
 - **Privacy Policy Update (`privacy.html`)**: Added essential clauses for Google AdSense, including the use of Doubleclick cookies, personalized advertising, and how users can opt-out.
-- **Tool Page Content Enrichment**: Added a "Deep Dive Information Section" to all tool pages (`coinflip.html`, `destinydice.html`, `cardflip.html`, etc.) providing historical context, psychological insights, and practical tips.
-- **Guide Page Enrichment**: Significantly increased the text volume of all tool-specific guides (e.g., `coinflip-guide.html`) by adding "Real-life Use Cases & Fun Tips" with detailed examples in both Korean and English.
-- **SEO Optimization**: Updated `index.html` with `hreflang` tags and hidden English SEO content to improve crawlability for global users.
-- **Sitemap Update**: Ensured all new and existing pages are correctly listed in `sitemap.xml`.
+- **Tool Page Content Enrichment**: Added a "Deep Dive Information Section" to all tool pages providing historical context, psychological insights, and practical tips.
+- **Content Navigation Hub (`insights/index.html`)**: Created a dedicated blog hub listing all 18 articles with excerpts, ensuring that all content is easily discoverable by search engine bots.
+- **E-E-A-T Reinforcement**:
+    - Added a visible "Why Zeze Hub?" section to the home page highlighting the use of **Web Crypto API** for fairness and the philosophy of overcoming decision fatigue.
+    - Created a `contact.html` page and added it to the footer to provide clear contact channels and improve site authority.
+    - **Content-First Strategy**: Added a "Featured Insight" section at the top of the home page to immediately showcase high-value editorial content to users and Google reviewers.
+- **Sitemap & SEO**: Updated `sitemap.xml` and `main.js` translations to support new pages and improve global crawlability.

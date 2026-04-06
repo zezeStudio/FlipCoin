@@ -60,7 +60,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=1.4.0">
     <script>
         tailwind.config = {
             theme: {
@@ -222,6 +222,27 @@
             <p class="mt-4 text-center text-xs text-gray-400" data-key="fortune_disclaimer">※ 본 서비스의 운세 결과는 재미로만 즐겨주시기 바랍니다.</p>
         </section>
 
+        <!-- Featured Insight (New Strategy for AdSense) -->
+        <section class="mb-16">
+            <div class="flex items-center gap-2 mb-6">
+                <span class="material-icons text-primary">auto_stories</span>
+                <h2 class="text-2xl font-bold" data-key="featured_insight_title">에디터 추천 인사이트</h2>
+            </div>
+            <div class="bg-white rounded-3xl p-8 border border-primary/10 shadow-xl hover:shadow-2xl transition-all group overflow-hidden relative">
+                <div class="absolute -right-10 -top-10 w-40 h-40 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-colors"></div>
+                <div class="relative z-10">
+                    <span class="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-bold mb-4 uppercase tracking-widest" data-key="featured_art_tag">Psychology</span>
+                    <h3 class="text-2xl md:text-3xl font-black mb-4 group-hover:text-primary transition-colors leading-tight" data-key="art1_title">선택 장애를 극복하는 법</h3>
+                    <p class="text-gray-600 leading-relaxed mb-6 max-w-2xl text-lg" data-key="featured_art_desc">
+                        현대인은 하루 평균 약 3만 5천 번의 선택을 내립니다. 끊임없는 선택의 과정이 어떻게 우리 뇌를 지치게 만드는지, 그리고 성공한 리더들의 '결정 다이어트' 전략을 확인해보세요.
+                    </p>
+                    <a href="insights/decision-fatigue.html" class="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white font-bold rounded-xl hover:bg-black transition-all shadow-lg active:scale-95">
+                        <span data-key="read_more">자세히 보기</span> <span class="material-icons text-sm">arrow_forward</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
         <!-- Tools Grid (모든 기능 8종 전체 복구) -->
         <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
             <a href="magiclamp/magiclamp.html" class="tool-card block bg-surface p-8 rounded-3xl border border-gray-100 shadow-lg group">
@@ -274,14 +295,14 @@
             </a>
         </section>
 
-        <!-- Decision Insights Section (인사이트 아티클 전체 복구) -->
+        <!-- Decision Insights Section -->
         <section class="border-t border-gray-200 pt-16">
             <div class="flex items-center gap-2 mb-8 justify-center">
                 <span class="material-icons text-primary">psychology</span>
                 <h2 class="text-2xl font-bold" data-key="article_section_title">의사결정 인사이트</h2>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="article-grid">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-10" id="article-grid">
                 <article class="bg-surface p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex flex-col">
                     <h3 class="text-lg font-bold text-gray-800 mb-3" data-key="art1_title">선택 장애를 극복하는 법</h3>
                     <p class="text-sm text-gray-600 leading-relaxed flex-grow" data-key="art1_desc">결정하지 못해 괴로운 '햄릿 증후군'.</p>
@@ -325,37 +346,53 @@
                     </a>
                 </article>
             </div>
+
+            <div class="text-center">
+                <a href="insights/" class="inline-flex items-center gap-2 px-8 py-3 bg-gray-100 text-gray-700 font-bold rounded-xl hover:bg-gray-200 transition-all active:scale-95">
+                    <span data-key="view_all_articles">전체 아티클 보기</span> <span class="material-icons text-sm">open_in_new</span>
+                </a>
+            </div>
         </section>
 
-        <!-- Hidden SEO Content for English Search Engines -->
-        <section class="sr-only">
-            <h2>Free Online Random Decision Tools</h2>
-            <p>Decision Hub provides a variety of free tools to help you make choices instantly. Whether you need to flip a coin in 3D, roll custom dice, or draw lots, we have the perfect solution for your decision fatigue.</p>
-            <ul>
-                <li><strong>Magic Lamp:</strong> Ask a Yes or No question and get witty advice from the genie.</li>
-                <li><strong>3D Coin Flip:</strong> A realistic coin toss with physics-based results for heads or tails.</li>
-                <li><strong>Dice of Destiny:</strong> Roll custom dice for lunch menus, board games, or any random selection.</li>
-                <li><strong>Ladder Climb:</strong> The classic "Ghost Leg" game for fair betting and role assignment with friends.</li>
-                <li><strong>Random Team Maker:</strong> Quickly divide a list of people into fair groups or teams.</li>
-                <li><strong>Card Flip & Drawing Lots:</strong> Simple and fast ways to pick winners or determine order.</li>
-                <li><strong>Time Bomb Game:</strong> A high-tension wire-cutting game for fun group decisions.</li>
-            </ul>
-            <p>Overcome Hamlet Syndrome and stop worrying about small choices. Our tools use the Web Crypto API to ensure 100% fairness and cryptographic randomness.</p>
+        <!-- Why Zeze Hub? (SEO & Value Reinforcement) -->
+        <section class="mt-20 p-8 md:p-12 bg-white rounded-3xl border border-gray-100 shadow-xl">
+            <h2 class="text-2xl font-black mb-6 text-center" data-key="why_hub_title">왜 Zeze Hub인가요?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div class="space-y-4">
+                    <h3 class="text-lg font-bold text-primary flex items-center gap-2">
+                        <span class="material-icons">verified</span>
+                        <span data-key="why_hub_sub1">신뢰할 수 있는 무작위성</span>
+                    </h3>
+                    <p class="text-sm text-gray-600 leading-relaxed" data-key="why_hub_desc1">
+                        Zeze Hub는 브라우저의 <strong>Web Crypto API</strong>를 사용하여 암호학적으로 안전한 난수를 생성합니다. 이는 단순한 Math.random()보다 훨씬 강력하며, 어떠한 조작이나 편향도 개입될 수 없는 완벽한 공정성을 보장합니다.
+                    </p>
+                </div>
+                <div class="space-y-4">
+                    <h3 class="text-lg font-bold text-primary flex items-center gap-2">
+                        <span class="material-icons">psychology</span>
+                        <span data-key="why_hub_sub2">결정 피로로부터의 해방</span>
+                    </h3>
+                    <p class="text-sm text-gray-600 leading-relaxed" data-key="why_hub_desc2">
+                        현대인은 하루 수만 번의 선택에 직면합니다. Zeze Hub는 사소한 고민에 들어가는 에너지를 줄여주어, 당신이 더 중요한 가치에 집중할 수 있도록 돕습니다. 심리학적 인사이트를 통해 자신의 선택 습관을 이해하는 즐거움도 누려보세요.
+                    </p>
+                </div>
+            </div>
         </section>
     </main>
 
     <footer class="bg-surface py-12 mt-auto border-t border-gray-200">
         <div class="max-w-4xl mx-auto px-4 text-center">
-            <div class="flex justify-center gap-6 mb-6 text-sm font-medium text-gray-500">
+            <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 mb-6 text-sm font-medium text-gray-500">
                 <a href="about.html" class="hover:text-primary" data-key="footer_about">소개</a>
                 <a href="hub-guide.html" class="hover:text-primary" data-key="footer_guide">사용 가이드</a>
                 <a href="privacy.html" class="hover:text-primary" data-key="footer_privacy">개인정보처리방침</a>
                 <a href="terms.html" class="hover:text-primary" data-key="footer_terms">서비스 약관</a>
+                <a href="contact.html" class="hover:text-primary" data-key="footer_contact">문의하기</a>
             </div>
             <p class="text-xs text-gray-400" data-key="footer_copyright">© 2026 ZezeStudio Decision Hub. All rights reserved.</p>
         </div>
     </footer>
 
-    <script src="main.js"></script>
+    <script src="main.js?v=1.4.0"></script>
 </body>
 </html>

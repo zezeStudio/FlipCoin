@@ -1,4 +1,4 @@
-const CACHE_NAME = 'zeze-hub-v1.3.0';
+const CACHE_NAME = 'zeze-hub-v1.4.0';
 const ASSETS = [
   '/',
   '/index.html',
@@ -10,7 +10,9 @@ const ASSETS = [
   '/about.html',
   '/privacy.html',
   '/terms.html',
+  '/contact.html',
   '/hub-guide.html',
+  '/insights/index.html',
   '/magiclamp/magiclamp.html',
   '/magiclamp/magiclamp-guide.html',
   '/coinflip/coinflip.html',
