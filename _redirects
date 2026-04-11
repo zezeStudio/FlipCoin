@@ -1,2 +1,71 @@
 /index.html / 301
-/*.html /:splat 301
+
+/magiclamp/ /magiclamp/lamp.html 200
+/magiclamp/lamp.html /magiclamp/ 301
+
+/coinflip/ /coinflip/flip.html 200
+/coinflip/flip.html /coinflip/ 301
+
+/destinydice/ /destinydice/dice.html 200
+/destinydice/dice.html /destinydice/ 301
+
+/ladderclimb/ /ladderclimb/climb.html 200
+/ladderclimb/climb.html /ladderclimb/ 301
+
+/drawinglots/ /drawinglots/lots.html 200
+/drawinglots/lots.html /drawinglots/ 301
+
+/teammaker/ /teammaker/make.html 200
+/teammaker/make.html /teammaker/ 301
+
+/cardflip/ /cardflip/card.html 200
+/cardflip/card.html /cardflip/ 301
+
+/timebomb/ /timebomb/bomb.html 200
+/timebomb/bomb.html /timebomb/ 301
+
+/insights/ /insights/blog.html 200
+/insights/blog.html /insights/ 301
+
+/insights/:slug /insights/:slug.html 200
+/insights/:slug.html /insights/:slug 301
+
+/about /about.html 200
+/about.html /about 301
+
+/contact /contact.html 200
+/contact.html /contact 301
+
+/privacy /privacy.html 200
+/privacy.html /privacy 301
+
+/terms /terms.html 200
+/terms.html /terms 301
+
+/hub-guide /hub-guide.html 200
+/hub-guide.html /hub-guide 301
+
+# Tool Guide rules
+/magiclamp/magiclamp-guide /magiclamp/magiclamp-guide.html 200
+/magiclamp/magiclamp-guide.html /magiclamp/magiclamp-guide 301
+
+/coinflip/coinflip-guide /coinflip/coinflip-guide.html 200
+/coinflip/coinflip-guide.html /coinflip/coinflip-guide 301
+
+/destinydice/destinydice-guide /destinydice/destinydice-guide.html 200
+/destinydice/destinydice-guide.html /destinydice/destinydice-guide 301
+
+/ladderclimb/ladderclimb-guide /ladderclimb/ladderclimb-guide.html 200
+/ladderclimb/ladderclimb-guide.html /ladderclimb/ladderclimb-guide 301
+
+/drawinglots/drawinglots-guide /drawinglots/drawinglots-guide.html 200
+/drawinglots/drawinglots-guide.html /drawinglots/drawinglots-guide 301
+
+/teammaker/teammaker-guide /teammaker/teammaker-guide.html 200
+/teammaker/teammaker-guide.html /teammaker/teammaker-guide 301
+
+/cardflip/cardflip-guide /cardflip/cardflip-guide.html 200
+/cardflip/cardflip-guide.html /cardflip/cardflip-guide 301
+
+/timebomb/timebomb-guide /timebomb/timebomb-guide.html 200
+/timebomb/timebomb-guide.html /timebomb/timebomb-guide 301
